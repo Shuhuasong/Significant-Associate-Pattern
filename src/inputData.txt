@@ -1,0 +1,11 @@
+8 5
+ 7            2
+Type		Overall_Type	Arrangement    		Margin_sub-category		Count
+Dogwood	    Simple		    Opposite				X		        	     2
+Maple		Simple		    Opposite				X			             2
+Ash		    Compound		Opposite				    X			             40
+Hickey		Compound		X		        		X			             2
+Locust		Compound		Alternate				X			             2
+White_Oak	Simple		    Alternate				Rounded			         100
+Red_Oak		Simple		    Alternate				Pointed			         100
+
