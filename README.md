@@ -42,6 +42,10 @@ Mutual information measure in event pattern level:  log_2[Pr(A:0,B:1)/(Pr(A:0) *
 ## 5. Video Walkthrough
 <img src='https://recordit.co/NU6wYDlBfq.gif' width='400' alt='Video Walkthrough' />
 
+## 6. how to run the code?
+      Look at the video walkthrough
+
+
 ## 6. Resource reference
    https://www-users.cse.umn.edu/~kumar001/dmbook/ch6.pdf 
 
