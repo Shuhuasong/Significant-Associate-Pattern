@@ -4,9 +4,29 @@
 
 Time spent: **13** hours spent in total
 
-## User Stories
+## What's the problem I am solving ? 
 
-The following **required** functionality is completed:
+The program is aiming to find the significant association patterns for a large data set(market basket transaction) according to the two criteria :
+
+(1)	Support Measure (cirteria-1) </br>
+(2)	Interestingness/level of dependency (criteria-2) </br>
+Mutual information measure in event pattern level:  log_2[Pr(A:0,B:1)/(Pr(A:0) * Pr(B:1))] </br>
+(3)	Discovering significant association patterns requires: </br>
+-	Join probability information : Pr(x1, x2, ….., xn) </br>
+-	Marginal Probability information: Pr(x1), Pr(x2), …, Pr(xn) </br>
+-	Appropriate support threshold a related to population size N </br>
+(4)	Properties for significant association patterns:  </br>
+-	Support measure Pr(x1, x2, …xn) > a%  </br>
+-	MI(x1, x2, …., xn)  > (1/ Pr(x1, x2, ….., xn)) ^[(lamda^2/2N)^[(E^/E’)^(O/2)] </br>
+-	MI(x1, x2, …., xn)  = Log_2Pr(x1, x2, …, xn)/(Pr(x1)*Pr(x2)*…*Pr(xn)) </br>
+-	N = smaple population size </br>
+-	(lamda^2) = Pearson Chi-square test statistic defined as (Oi-Ei)^2/Ei </br>
+-	E^ = Expected entropy measure of estimated probability model </br>
+-	E’ = Maximal possible entropy of estimated probability model </br>
+-	O = order of the association pattern (n is this case)  </br>
+(5)	Unfortunately, statistical convergence does not behave well in high order patterns with multiple variables. </br>
+
+
 
 - [X] User can view the last 20 posts submitted to "Instagram".
 - [X] The user should switch between different tabs - viewing all posts (feed view), compose (capture photos form camera) and profile tabs (posts made) using fragments and a Bottom Navigation View. (2 points)
