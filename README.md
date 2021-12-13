@@ -35,7 +35,7 @@ Mutual information measure in event pattern level:  log_2[Pr(A:0,B:1)/(Pr(A:0) *
    
 ## 4. Disclose limitation and discussed the lessons learned 
 
-(1)	The program doesn’t check the input which is out of range of status.
+(1)	The program doesn’t check the input which is out of range of status. </br>
 (2)	The program only capture the pattern according to the input, it doesn’t permute very kind of patters, for example, if there are A, B, C, D, E, F 6 columns, the program should permute all the 3rd order patters(ABC, BCD, CDE, DEF, …)
 
 
