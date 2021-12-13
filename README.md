@@ -43,6 +43,9 @@ Mutual information measure in event pattern level:  log_2[Pr(A:0,B:1)/(Pr(A:0) *
 <img src='https://recordit.co/NU6wYDlBfq.gif' width='400' alt='Video Walkthrough' />
 
 ## 6. how to run the code?
+      In IntelliJ IDE: 
+      1) Place the input file under the src folder
+      2) Configure the input parameter with 3 parameter(the name of input file, threshold, patter order), eg.  inputData1.txt 0.13 Pr(B:0,C:0,D:0)
       Look at the video walkthrough
 
 
