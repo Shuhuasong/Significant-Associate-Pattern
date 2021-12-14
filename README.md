@@ -3,11 +3,9 @@
 
 # Project 3 - *Discovery Significant Associate Pattern*
 
-Time spent: **13** hours spent in total
-
 ## 1. What's the problem I am solving ? 
 
-The program is aiming to find the significant association patterns for a large data set(market basket transaction) according to the two criteria :
+The program is aiming to find the significant association patterns for a large data set(market basket transaction) according to the two criteria, the program can get the 2nd, 3rd or high order pattern, and decide which pattern passing the support and which pattern is statiscally significant associate pattern. 
 
 (1)	Support Measure (cirteria-1) </br>
 (2)	Interestingness/level of dependency (criteria-2) </br>
