@@ -14,7 +14,7 @@ Mutual information measure in event pattern level:  log_2[Pr(A:0,B:1)/(Pr(A:0) *
 -	Join probability information : Pr(x1, x2, ….., xn) </br>
 -	Marginal Probability information: Pr(x1), Pr(x2), …, Pr(xn) </br>
 -	Appropriate support threshold a related to population size N </br>
-[]	Properties for significant association patterns:  </br>
+[ ]	Properties for significant association patterns:  </br>
 -	Support measure Pr(x1, x2, …xn) > a%  </br>
 -	MI(x1, x2, …., xn)  > (1/ Pr(x1, x2, ….., xn)) ^[(lamda^2/2N)^[(E^/E’)^(O/2)]  </br>
 -	MI(x1, x2, …., xn)  = Log_2Pr(x1, x2, …, xn)/(Pr(x1)*Pr(x2)*…*Pr(xn)) </br>
