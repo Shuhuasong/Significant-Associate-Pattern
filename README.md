@@ -37,7 +37,7 @@ Mutual information measure in event pattern level:  log_2[Pr(A:0,B:1)/(Pr(A:0) *
 
 ## 4. Software Solution
 ###      Video Walkthrough
-<img src='https://recordit.co/NU6wYDlBfq.gif' width='400' alt='Video Walkthrough' />
+<img src='https://recordit.co/NU6wYDlBfq.gif' width='500' alt='Video Walkthrough' />
 
 ## 5. how to run the code?
       In IntelliJ IDE: 
