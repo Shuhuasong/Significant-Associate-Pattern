@@ -26,21 +26,20 @@ Mutual information measure in event pattern level:  log_2[Pr(A:0,B:1)/(Pr(A:0) *
 
 (4)	Unfortunately, statistical convergence does not behave well in high order patterns with multiple variables. </br>
 
-## 2. Software Solution
-## 3. Status of Code
+## 2. Status of Code
 
    The program run well, and it can help us to detect with pattern pass the threshold, and after that, it can help us calculate the left hand side and right hand side, in order to check if it is statistically significant association pattern not. 
    
-## 4. Disclose limitation and discussed the lessons learned 
+## 3. Disclose limitation and discussed the lessons learned 
 
 (1)	The program doesn’t check the input which is out of range of status. </br>
 (2)	The program only capture the pattern according to the input, it doesn’t permute very kind of patters, for example, if there are A, B, C, D, E, F 6 columns, the program should permute all the 3rd order patters(ABC, BCD, CDE, DEF, …)
 
-
-## 5. Video Walkthrough
+## 4. Software Solution
+###      Video Walkthrough
 <img src='https://recordit.co/NU6wYDlBfq.gif' width='400' alt='Video Walkthrough' />
 
-## 6. how to run the code?
+## 5. how to run the code?
       In IntelliJ IDE: 
       1) Place the input file under the src folder
       2) Configure the input parameter with 3 parameter(the name of input file, threshold, patter order), eg.  inputData1.txt 0.13 Pr(B:0,C:0,D:0)
