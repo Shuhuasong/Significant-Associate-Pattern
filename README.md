@@ -3,7 +3,7 @@
 
 # Project 3 - *Discovery Significant Associate Pattern*
 
-## 1. What's the problem I am solving ? 
+## 1. What the problem is solving ? 
 
 The program is aiming to find the significant association patterns for a large data set(market basket transaction) according to the two criteria, the program can get the 2nd, 3rd or high order pattern, and decide which pattern passing the support and which pattern is statiscally significant associate pattern. 
 
