@@ -41,7 +41,8 @@ Mutual information measure in event pattern level:  log_2[Pr(A:0,B:1)/(Pr(A:0) *
 if there are A, B, C, D, E, F 6 columns, the program should permute all the 3rd order patters(ABC, BCD, CDE, DEF, …)
 ####    Solving Solution: 
        The program reads the number of order from input, and produces all the combination of pattern by applying the 
-       Backtrack algorithm. After get all the permutation, we can process each pattern and calculate the freequecy of each pattern. 
+       Backtrack algorithm. After get all the permutation, we can process each pattern and calculate the freequecy 
+       of each pattern. 
 ####    Code Snippes
        
         
