@@ -56,8 +56,9 @@ if there are A, B, C, D, E, F 6 columns, the program should permute all the 3rd 
             System.out.println("Pattern-letter = " + p);
         }
         
-        //Produce all the possible probability of pattern according to the all the pattern combinations, 
-        e.g. "BCD"--> "Pr(B:0,C:0,D:0)"
+        //Produce all the possible probability of pattern according to the all the pattern combinations
+        //e.g. "BCD"--> "Pr(B:0,C:0,D:0)"
+        
         allExprPatterns = new HashSet<>();
         for(String p : allPatterns){
             StringBuilder comSb = new StringBuilder();
@@ -79,6 +80,7 @@ if there are A, B, C, D, E, F 6 columns, the program should permute all the 3rd 
    } 
   
     //Produce all the combinations of patterns from all the columns, e.g. "BCD","CDE","CDE",....
+    
     private void backtrack(int start, int numOrder,  StringBuilder sb, Set<String> allPatterns) {
         if(numOrder==0){
             allPatterns.add(sb.toString());
