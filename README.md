@@ -30,7 +30,7 @@ Mutual information measure in event pattern level:  log_2[Pr(A:0,B:1)/(Pr(A:0) *
    The program run well, and it can help us to detect with pattern pass the threshold, and after that, it can help us 
    calculate the left hand side and right hand side, in order to check if it is statistically significant association pattern not. 
    
-## 3. Disclose limitation and discussed the lessons learned(All the limiation on the following have been fixed, Please look at video walk through-Improving Version)  
+## 3. Disclose limitation and discussed the lessons learned(All the limiations on the following have been fixed, Please look at video walk through-Improving Version)  
 
 (1)	The program doesn’t check the input which is out of range of status. </br>      
 ####    Solving Solution: 
