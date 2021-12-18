@@ -39,7 +39,7 @@ Mutual information measure in event pattern level:  log_2[Pr(A:0,B:1)/(Pr(A:0) *
        ####    Solving Solution: 
        The program reads the number of order from input, and produces all the combination of pattern by applying the Backtrack algorithm. After get all the permutation, we can process each pattern and calculate the freequecy of each pattern. 
        ####    Code Snippes
-       <code>
+      
         private Set<String> getPatternPermute(int numOrder) {
         Set<String> allPatterns = new HashSet<>();
         StringBuilder sb = new StringBuilder();
@@ -67,9 +67,7 @@ Mutual information measure in event pattern level:  log_2[Pr(A:0,B:1)/(Pr(A:0) *
         }
         return allExprPatterns;
    } 
-   </code>
-   
-   <code> 
+  
 
     private void backtrack(int start, int numOrder,  StringBuilder sb, Set<String> allPatterns) {
         if(numOrder==0){
@@ -82,7 +80,7 @@ Mutual information measure in event pattern level:  log_2[Pr(A:0,B:1)/(Pr(A:0) *
             sb.deleteCharAt(sb.length()-1);
         }
     }
-                                              </code>
+    
 ## 4. Software Solution
 ###      Video Walkthrough
 <img src='https://recordit.co/NU6wYDlBfq.gif' width='600' alt='Video Walkthrough' />
