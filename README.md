@@ -1,5 +1,4 @@
 # Data Mining & Warehousing
-# Significant-Associate-Pattern
 
 # Project 3 - *Discovery Significant Associate Pattern*
 
