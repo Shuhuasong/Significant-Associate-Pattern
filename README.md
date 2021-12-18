@@ -27,7 +27,8 @@ Mutual information measure in event pattern level:  log_2[Pr(A:0,B:1)/(Pr(A:0) *
 
 ## 2. Status of Code
 
-   The program run well, and it can help us to detect with pattern pass the threshold, and after that, it can help us calculate the left hand side and right hand side, in order to check if it is statistically significant association pattern not. 
+   The program run well, and it can help us to detect with pattern pass the threshold, and after that, it can help us 
+   calculate the left hand side and right hand side, in order to check if it is statistically significant association pattern not. 
    
 ## 3. Disclose limitation and discussed the lessons learned(All the limiation on the following have been fixed, Please look at video walk through-Improving Version)  
 
@@ -55,7 +56,8 @@ if there are A, B, C, D, E, F 6 columns, the program should permute all the 3rd 
             System.out.println("Pattern-letter = " + p);
         }
         
-        //Produce all the possible probability of pattern according to the all the pattern combinations, e.g. "BCD"--> "Pr(B:0,C:0,D:0)"
+        //Produce all the possible probability of pattern according to the all the pattern combinations, 
+        e.g. "BCD"--> "Pr(B:0,C:0,D:0)"
         allExprPatterns = new HashSet<>();
         for(String p : allPatterns){
             StringBuilder comSb = new StringBuilder();
@@ -99,7 +101,8 @@ if there are A, B, C, D, E, F 6 columns, the program should permute all the 3rd 
 ## 5. how to run the code?
       In IntelliJ IDE: 
       1) Place the input file under the src folder
-      2) Configure the input parameter with 3 parameter(the name of input file, threshold, patter order), eg.  inputData1.txt 0.13 Pr(B:0,C:0,D:0)
+      2) Configure the input parameter with 3 parameter(the name of input file, threshold, patter order),
+      eg.  inputData1.txt 0.13 Pr(B:0,C:0,D:0)
       Look at the video walkthrough
 
 
