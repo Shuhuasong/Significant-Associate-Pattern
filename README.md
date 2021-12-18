@@ -32,13 +32,13 @@ Mutual information measure in event pattern level:  log_2[Pr(A:0,B:1)/(Pr(A:0) *
 ## 3. Disclose limitation and discussed the lessons learned(All the limiation on the following have been fixed, Please look at video walk through-Improving Version)  
 
 (1)	The program doesn’t check the input which is out of range of status. </br>      
-      ####    Solving Solution: 
+####    Solving Solution: 
       In order to check if the input data from input table are out of range of specific column(attribute) or not, I am using an array of HashMap to store all the status of each column. If any data point is unvalid, the program will skip the pattern without showing in the result.
       
 (2)	The program only capture the pattern according to the input, it doesn’t permute very kind of patters, for example, if there are A, B, C, D, E, F 6 columns, the program should permute all the 3rd order patters(ABC, BCD, CDE, DEF, …)
-       ####    Solving Solution: 
+####    Solving Solution: 
        The program reads the number of order from input, and produces all the combination of pattern by applying the Backtrack algorithm. After get all the permutation, we can process each pattern and calculate the freequecy of each pattern. 
-       ####    Code Snippes
+####    Code Snippes
        
         
         private Set<String> getPatternPermute(int numOrder) {
