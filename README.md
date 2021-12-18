@@ -29,7 +29,7 @@ Mutual information measure in event pattern level:  log_2[Pr(A:0,B:1)/(Pr(A:0) *
 
    The program run well, and it can help us to detect with pattern pass the threshold, and after that, it can help us calculate the left hand side and right hand side, in order to check if it is statistically significant association pattern not. 
    
-## 3. Disclose limitation and discussed the lessons learned 
+## 3. Disclose limitation and discussed the lessons learned(All the limiation on the following have been fixed, Please look at video walk through-Improving Version)  
 
 (1)	The program doesn’t check the input which is out of range of status. </br>
 (2)	The program only capture the pattern according to the input, it doesn’t permute very kind of patters, for example, if there are A, B, C, D, E, F 6 columns, the program should permute all the 3rd order patters(ABC, BCD, CDE, DEF, …)
@@ -37,6 +37,8 @@ Mutual information measure in event pattern level:  log_2[Pr(A:0,B:1)/(Pr(A:0) *
 ## 4. Software Solution
 ###      Video Walkthrough
 <img src='https://recordit.co/NU6wYDlBfq.gif' width='600' alt='Video Walkthrough' />
+###      Improving Version
+<img src='http://g.recordit.co/iry8W9TJeG.gif' width='600' alt='Video Walkthrough' />
 
 ## 5. how to run the code?
       In IntelliJ IDE: 
