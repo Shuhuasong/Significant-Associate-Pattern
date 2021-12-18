@@ -66,7 +66,10 @@ Mutual information measure in event pattern level:  log_2[Pr(A:0,B:1)/(Pr(A:0) *
             System.out.println("Pattern-expression = " + pat);
         }
         return allExprPatterns;
-    }
+   } 
+   </code>
+   
+   <code> 
 
     private void backtrack(int start, int numOrder,  StringBuilder sb, Set<String> allPatterns) {
         if(numOrder==0){
