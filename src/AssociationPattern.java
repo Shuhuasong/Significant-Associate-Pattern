@@ -1,9 +1,7 @@
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.text.DecimalFormat;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Scanner;
+import java.util.*;
 
 
 /**
@@ -23,6 +21,7 @@ public class AssociationPattern {
     static String[][] dataAry, numAry;
     String[] inputVariables, inputValues;
     int[] inputColIdx;
+    String[] colLetters;
     int totalCount = 0;
     int totalPattern = 0;
     double expressProb = 0.0;
@@ -33,6 +32,7 @@ public class AssociationPattern {
     String[] paterrnStatus;
     double[] patternProb;
     String[] inValues;
+    Set<String> allExprPatterns;
     public AssociationPattern(int numRows, int numCols, double threshold){
         this.numRows = numRows;
         this.numCols = numCols;
@@ -71,7 +71,6 @@ public class AssociationPattern {
            // System.out.println();
         }
 
-
         for(int c=0; c<numCols; c++){
             int counter = 0;
             for(int r=1; r<numRows; r++){
@@ -86,7 +85,7 @@ public class AssociationPattern {
         for(int c=0; c<numCols; c++){
            // System.out.println();
             for(String key : typeToNum[c].keySet()){
-                //System.out.println(key + " --##--" + typeToNum[c].get(key));
+                System.out.println(key + " --##--" + typeToNum[c].get(key));
             }
             for(String key : colToFreq[c].keySet()){
               //  System.out.println(key + "--####--" + colToFreq[c].get(key));
@@ -110,6 +109,13 @@ public class AssociationPattern {
             letterToCol.put(letter+"", dataAry[0][c]);
             colToIndex.put(letter+"", c);
             //System.out.println(dataAry[0][c] + " $$$ " + letter + " $$$ " + c);
+        }
+
+        colLetters = new String[letterToCol.size()];
+        int index = 0;
+        for(String key : letterToCol.keySet()){
+            System.out.println(key + " -&&-");
+            colLetters[index++] = key;
         }
 
         for(int c=0; c<numCols; c++){
@@ -224,6 +230,11 @@ public class AssociationPattern {
         for(int r=1; r<numRows; r++){
             StringBuilder sb = new StringBuilder();
             for(int c=0; c<inputColIdx.length; c++){
+                int curVal = Integer.parseInt(dataAry[r][inputColIdx[c]]);
+                if(curVal >= colToFreq[inputColIdx[c]].size()){    //Checking the validation of input
+                    System.out.println("Alert : the data for this data point is not valid!!!");
+                    break;
+                }
                 if(c!=inputColIdx.length-1){
                     sb.append(dataAry[r][inputColIdx[c]]).append(",");
                 }else{
@@ -389,11 +400,53 @@ public class AssociationPattern {
         return result;
     }
 
+    private Set<String> getPatternPermute(int numOrder) {
+        Set<String> allPatterns = new HashSet<>();
+        StringBuilder sb = new StringBuilder();
+        backtrack(1, numOrder, sb, allPatterns);
+        System.out.println("All combination of patterns: size = " + allPatterns.size());
+        for(String p : allPatterns){
+            System.out.println("Pattern-letter = " + p);
+        }
+        allExprPatterns = new HashSet<>();
+        for(String p : allPatterns){
+            StringBuilder comSb = new StringBuilder();
+            char[] letters = p.toCharArray();
+            comSb.append("Pr(");
+            for(char a : letters){
+                comSb.append(a);
+                comSb.append(":0,");
+            }
+            comSb.deleteCharAt(comSb.length()-1);
+            comSb.append(")");
+            allExprPatterns.add(comSb.toString());
+        }
+        System.out.println("size = " + allExprPatterns.size());
+        for(String pat: allExprPatterns){
+            System.out.println("Pattern-expression = " + pat);
+        }
+        return allExprPatterns;
+    }
+
+    private void backtrack(int start, int numOrder,  StringBuilder sb, Set<String> allPatterns) {
+        if(numOrder==0){
+            allPatterns.add(sb.toString());
+            return;
+        }
+        for(int i=start; i<colLetters.length; i++){
+            sb.append(colLetters[i]);
+            backtrack(i+1, numOrder-1, sb, allPatterns);
+            sb.deleteCharAt(sb.length()-1);
+        }
+    }
+
     public static void main(String[] args) throws FileNotFoundException {
         Scanner inputFile = new Scanner(new FileReader(args[0]));
         String inputName = args[0];
         String thresholdSt = args[1];
         String expression = args[2]; //expression==order
+        String order = args[3];
+        int numOrder = Integer.parseInt(order);
         //System.out.println(args[0] + " " + args[1]);
         System.out.println(expression);
 
@@ -417,21 +470,23 @@ public class AssociationPattern {
         for(String k : colToLetter.keySet()){
           //  System.out.println(k + "   " + colToLetter.get(k));
         }
+        Set<String> allExprPatterns = pattern.getPatternPermute(numOrder);
+        for(String pat : allExprPatterns){
+            double  expressProb = pattern.parseExpression(pat);
+            pattern.patternFreq_cal();
+       /*     String[] inputVariables = pattern.inputVariables;
+            String[] inputValues = pattern.inputValues;
+            Map<String, String> letterToCol = pattern.letterToCol;
 
-        double  expressProb = pattern.parseExpression(expression);
-        pattern.patternFreq_cal();
-        String[] inputVariables = pattern.inputVariables;
-        String[] inputValues = pattern.inputValues;
-        Map<String, String> letterToCol = pattern.letterToCol;
-
-        StringBuilder sb = new StringBuilder();
-        sb.append("Pr(");
-        for(int i=0; i<inputVariables.length; i++){
-            sb.append(letterToCol.get(inputVariables[i]) + ":" + inputValues[i] + ", ");
+            StringBuilder sb = new StringBuilder();
+            sb.append("Pr(");
+            for(int i=0; i<inputVariables.length; i++){
+                sb.append(letterToCol.get(inputVariables[i]) + ":" + inputValues[i] + ", ");
+            }
+            sb.deleteCharAt(sb.length()-1);
+            sb.append(")");
+            String formalInput = sb.toString(); */
         }
-        sb.deleteCharAt(sb.length()-1);
-        sb.append(")");
-        String formalInput = sb.toString();
 
 /*
         System.out.println( "expressProb = " + expressProb);
@@ -469,5 +524,7 @@ public class AssociationPattern {
  */
         inputFile.close();
     }
+
+
 
 }
