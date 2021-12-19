@@ -85,7 +85,7 @@ public class AssociationPattern {
         for(int c=0; c<numCols; c++){
            // System.out.println();
             for(String key : typeToNum[c].keySet()){
-                System.out.println(key + " --##--" + typeToNum[c].get(key));
+                //System.out.println(key + " --##--" + typeToNum[c].get(key));
             }
             for(String key : colToFreq[c].keySet()){
               //  System.out.println(key + "--####--" + colToFreq[c].get(key));
@@ -114,7 +114,7 @@ public class AssociationPattern {
         colLetters = new String[letterToCol.size()];
         int index = 0;
         for(String key : letterToCol.keySet()){
-            System.out.println(key + " -&&-");
+            //System.out.println(key + " -&&-");
             colLetters[index++] = key;
         }
 
