@@ -98,7 +98,6 @@ if there are A, B, C, D, E, F 6 columns, the program should permute all the 3rd 
 <img src='https://recordit.co/NU6wYDlBfq.gif' width='600' alt='Video Walkthrough' />
 
 ###      Improving Version
-<img src='https://recordit.co/yF9kjElmPD.gif' width='600' alt='Video Walkthrough' />
 
 ## 5. how to run the code?
       In IntelliJ IDE: 
