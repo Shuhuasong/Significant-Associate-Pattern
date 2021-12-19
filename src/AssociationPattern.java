@@ -8,7 +8,7 @@ import java.util.*;
  * Created by Shuhua Song
  */
 public class AssociationPattern {
-    static int numRows, numCols;
+    static int numRows, numCols, numOrder;
     static double threshold;
     String inputExpression;
     Map<String, Integer>[] typeToNum;
@@ -32,11 +32,14 @@ public class AssociationPattern {
     String[] paterrnStatus;
     double[] patternProb;
     String[] inValues;
-    Set<String> allExprPatterns;
-    public AssociationPattern(int numRows, int numCols, double threshold){
+    int[] colNumStates;
+    TreeSet<String> allExprPatterns;
+    TreeMap<String, Integer> patternToAllFreq;
+    public AssociationPattern(int numRows, int numCols, double threshold, int numOrder){
         this.numRows = numRows;
         this.numCols = numCols;
         this.threshold = threshold;
+        this.numOrder = numOrder;
         typeToNum = new HashMap[numCols];
         colToFreq = new HashMap[numCols];
         colToLetter = new HashMap<>();
@@ -171,7 +174,7 @@ public class AssociationPattern {
             String[] terms = term.split(":");
             colVars[i] = terms[0];
             values[i] = terms[1];
-           // System.out.println(colVars[i] + "--" + values[i]);
+            //System.out.println(colVars[i] + "--" + values[i]);
         }
         inputVariables = colVars.clone();
         inputValues = values.clone();
@@ -223,7 +226,8 @@ public class AssociationPattern {
         for(int i=0; i<n; i++){
             input.append(inputVariables[i]).append(",");
             inputColIdx[i] = colToIndex.get(inputVariables[i]);
-           // System.out.println(inputColIdx[i] + "--****--" + inputVariables[i]);
+            System.out.println("Column: " + inputVariables[i] + "---- " + "Index: " + inputColIdx[i]);
+            //System.out.println(inputColIdx[i] + "--****--" + inputVariables[i]);
         }
         input.deleteCharAt(input.length()-1);
         inputExpression = input.toString();
@@ -231,7 +235,7 @@ public class AssociationPattern {
             StringBuilder sb = new StringBuilder();
             for(int c=0; c<inputColIdx.length; c++){
                 int curVal = Integer.parseInt(dataAry[r][inputColIdx[c]]);
-                if(curVal >= colToFreq[inputColIdx[c]].size()){    //Checking the validation of input
+                if(curVal >= colNumStates[inputColIdx[c]]){    //Checking the validation of input
                     System.out.println("Alert : the data for this data point is not valid!!!");
                     break;
                 }
@@ -400,18 +404,44 @@ public class AssociationPattern {
         return result;
     }
 
-    private Set<String> getPatternPermute(int numOrder) {
-        Set<String> allPatterns = new HashSet<>();
+
+    private void getNumStatesInput(String numStatesSt) {
+        String[] splits = numStatesSt.split("\\s+");
+        colNumStates = new int[numCols];
+        int i = 0;
+        for(int c=1; c<numCols; c++){
+            colNumStates[c] = Integer.parseInt(splits[i]);
+           // System.out.println( "col = " + colNumStates[c]);
+            i++;
+        }
+    }
+
+
+    private TreeSet<String> getPatternPermute(int numOrder) {
+        Set<String> allPatterns = new TreeSet<>();
         StringBuilder sb = new StringBuilder();
         backtrack(1, numOrder, sb, allPatterns);
-        System.out.println("All combination of patterns: size = " + allPatterns.size());
+        int size = allPatterns.size();
+        System.out.println("All combinations of " + numOrder + "_Order patterns(column representation): size = " + size);
         for(String p : allPatterns){
             System.out.println("Pattern-letter = " + p);
         }
-        allExprPatterns = new HashSet<>();
+        allExprPatterns = new TreeSet<>();
+        patternToAllFreq = new TreeMap<>();
         for(String p : allPatterns){
             StringBuilder comSb = new StringBuilder();
+            int freq = 1;
+            String currPat = "(";
             char[] letters = p.toCharArray();
+            for(char letter : letters){
+                int letterIdx = colToIndex.get(letter+"");
+                currPat += letter + " ";
+                //System.out.println("colNum = " + letter + " " + letterIdx + " " + colNumStates[letterIdx]);
+                freq *= colNumStates[letterIdx];
+            }
+            //System.out.println("pattern = " + p + "------" + "total = " + freq);
+            currPat +=  ")";
+            patternToAllFreq.put(currPat, freq);
             comSb.append("Pr(");
             for(char a : letters){
                 comSb.append(a);
@@ -421,9 +451,14 @@ public class AssociationPattern {
             comSb.append(")");
             allExprPatterns.add(comSb.toString());
         }
-        System.out.println("size = " + allExprPatterns.size());
+        //System.out.println("size = " + allExprPatterns.size());
         for(String pat: allExprPatterns){
-            System.out.println("Pattern-expression = " + pat);
+            //System.out.println("Pattern-expression = " + pat);
+        }
+        System.out.println();
+        System.out.println("Order       " + "Pattern Variables        " + "Number of permutation");
+        for(String currPat : patternToAllFreq.keySet()){
+            System.out.println(numOrder + "             " + currPat + "                          " + patternToAllFreq.get(currPat));
         }
         return allExprPatterns;
     }
@@ -444,22 +479,25 @@ public class AssociationPattern {
         Scanner inputFile = new Scanner(new FileReader(args[0]));
         String inputName = args[0];
         String thresholdSt = args[1];
-        String expression = args[2]; //expression==order
-        String order = args[3];
+        //String numStatesSt = args[2]; //expression==order
+        String order = args[2];
         int numOrder = Integer.parseInt(order);
         //System.out.println(args[0] + " " + args[1]);
-        System.out.println(expression);
 
         double threshold = Double.parseDouble(thresholdSt);
         System.out.println("threshoud = " + threshold);
         int numRows = inputFile.nextInt();
         int numCols = inputFile.nextInt();
         inputFile.nextLine();
-        AssociationPattern pattern = new AssociationPattern(numRows, numCols, threshold);
+        String numStatesSt = inputFile.nextLine();
+        System.out.println("states = " + numStatesSt);
+
+        //inputFile.nextLine();
+        AssociationPattern pattern = new AssociationPattern(numRows, numCols, threshold, numOrder);
         String[][] dataAry = pattern.dataAry;
 
         pattern.loadData(inputFile, dataAry);
-
+        pattern.getNumStatesInput(numStatesSt);
 
         System.out.println("------------------#########################-------------------");
 
@@ -524,7 +562,5 @@ public class AssociationPattern {
  */
         inputFile.close();
     }
-
-
 
 }
