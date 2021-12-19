@@ -27,13 +27,72 @@ Mutual information measure in event pattern level:  log_2[Pr(A:0,B:1)/(Pr(A:0) *
 
 ## 2. Status of Code
 
-   The program run well, and it can help us to detect with pattern pass the threshold, and after that, it can help us calculate the left hand side and right hand side, in order to check if it is statistically significant association pattern not. 
+   The program run well, and it can help us to detect with pattern pass the threshold, and after that, it can help us 
+   calculate the left hand side and right hand side, in order to check if it is statistically significant association pattern not. 
    
-## 3. Disclose limitation and discussed the lessons learned(All the limiation on the following have been fixed, Please look at video walk through-Improving Version)  
+## 3. Disclose limitation and discussed the lessons learned(All the limiations on the following have been fixed, Please look at video walk through-Improving Version)  
 
-(1)	The program doesn’t check the input which is out of range of status. </br>
-(2)	The program only capture the pattern according to the input, it doesn’t permute very kind of patters, for example, if there are A, B, C, D, E, F 6 columns, the program should permute all the 3rd order patters(ABC, BCD, CDE, DEF, …)
-
+(1)	The program doesn’t check the input which is out of range of status. </br>      
+####    Solving Solution: 
+      In order to check if the input data from input table are out of range of specific column(attribute) or not, 
+      I am using an array of HashMap to store all the status of each column. If any data point is unvalid, the program 
+      will skip the pattern without showing in the result.
+      
+(2)	The program only capture the pattern according to the input, it doesn’t permute very kind of patters, for example, 
+if there are A, B, C, D, E, F 6 columns, the program should permute all the 3rd order patters(ABC, BCD, CDE, DEF, …)
+####    Solving Solution: 
+       The program reads the number of order from input, and produces all the combination of pattern by applying the 
+       Backtrack algorithm. After get all the permutation, we can process each pattern and calculate the freequecy 
+       of each pattern. 
+####    Code Snippes
+       
+        
+        private Set<String> getPatternPermute(int numOrder) {
+        Set<String> allPatterns = new HashSet<>();
+        StringBuilder sb = new StringBuilder();
+        backtrack(1, numOrder, sb, allPatterns);
+        System.out.println("All combination of patterns: size = " + allPatterns.size());
+        for(String p : allPatterns){
+            System.out.println("Pattern-letter = " + p);
+        }
+        
+        //Produce all the possible probability of pattern according to the all the pattern combinations
+        //e.g. "BCD"--> "Pr(B:0,C:0,D:0)"
+        
+        allExprPatterns = new HashSet<>();
+        for(String p : allPatterns){
+            StringBuilder comSb = new StringBuilder();
+            char[] letters = p.toCharArray();
+            comSb.append("Pr(");
+            for(char a : letters){
+                comSb.append(a);
+                comSb.append(":0,");
+            }
+            comSb.deleteCharAt(comSb.length()-1);
+            comSb.append(")");
+            allExprPatterns.add(comSb.toString());
+        }
+        System.out.println("size = " + allExprPatterns.size());
+        for(String pat: allExprPatterns){
+            System.out.println("Pattern-expression = " + pat);
+        }
+        return allExprPatterns;
+   } 
+  
+    //Produce all the combinations of patterns from all the columns, e.g. "BCD","CDE","CDE",....
+    
+    private void backtrack(int start, int numOrder,  StringBuilder sb, Set<String> allPatterns) {
+        if(numOrder==0){
+            allPatterns.add(sb.toString());
+            return;
+        }
+        for(int i=start; i<colLetters.length; i++){
+            sb.append(colLetters[i]);
+            backtrack(i+1, numOrder-1, sb, allPatterns);
+            sb.deleteCharAt(sb.length()-1);
+        }
+    }
+    
 ## 4. Software Solution
 ###      Video Walkthrough
 <img src='https://recordit.co/NU6wYDlBfq.gif' width='600' alt='Video Walkthrough' />
@@ -44,8 +103,16 @@ Mutual information measure in event pattern level:  log_2[Pr(A:0,B:1)/(Pr(A:0) *
 ## 5. how to run the code?
       In IntelliJ IDE: 
       1) Place the input file under the src folder
-      2) Configure the input parameter with 3 parameter(the name of input file, threshold, patter order), eg.  inputData1.txt 0.13 Pr(B:0,C:0,D:0)
-      Look at the video walkthrough
+      2) Configure the input parameter with 4 parameters,
+      
+      1st parameter: the name of input file
+      2nd parameter: the number of threshold
+      3rd parameter: the pattern expression
+      4th parameter: the number of order
+      
+      eg.  inputData1.txt 0.13 Pr(B:0,C:0,D:0) 3
+      
+      Please look at the video walkthrough
 
 
 ## 6. Resource reference
