@@ -1,0 +1,49 @@
+Pr(B:0,C:0,D:0,E:0,F:0,G:0)
+threshoud = 0.13
+---------------------------------------------------------------------------
+ItemId(A)             Bread(B)             Milk(C)             Diapers(D)             Beer(E)             Eggs(F)             Cola(G)
+1                   0                   1                   2                   0                   1                   1
+2                   1                   0                   2                   1                   2                   0
+3                   1                   0                   2                   1                   2                   1
+4                   5                   1                   0                   1                   2                   0
+5                   1                   0                   2                   0                   1                   1
+6                   1                   1                   1                   0                   2                   1
+7                   1                   0                   1                   0                   0                   1
+8                   1                   1                   1                   0                   2                   1
+------------------#########################-------------------
+All combination of patterns: size = 1
+Pattern-letter = BCDEFG
+size = 1
+Pattern-expression = Pr(B:0,C:0,D:0,E:0,F:0,G:0)
+Alert : the data for this data point is not valid!!!
+-----------------------------------Threshold Test---------------------------------
+
+Pattern(B,C,D,E,F,G)     Frequency       Passing Threshold Test
+                  1             No
+1,0,2,1,2,0                  1             No
+1,1,1,0,2,1                  2             Yes
+1,0,2,1,2,1                  1             No
+0,1,2,0,1,1                  1             No
+1,0,1,0,0,1                  1             No
+1,0,2,0,1,1                  1             No
+-----------------------------Statiscally Significant Test-------------------------
+----------------------- Test pattern: (1,1,1,0,2,1) --------------------------------
+Left Hand Side: MI(B,C,D,E,F,G)  = 2.6013
+values : 1  1  1  0  2  1
+Oi = 2.0; ei = 0.33 termProb = 0.25
+Chi-square = 8.4512
+maxEntropy = 7.7549
+SysEntropy = 2.75
+E^/E' = 0.35461450179886267
+O = 3.0
+expo = 0.04459328597875573
+Chi-square/2N = 0.5282
+1/Pr = 4.0
+temp = 0.9719382405964626
+rightHandSide = 3.8877529623858504
+Right Hand Side : 3.8877529623858504
+Left Hand Side < Right Hand Side
+Conclusion: B,C,D,E,F,G is not a statiscally significant association pattern because it fails the independency test
+------------------------------------------------------------------------
+
+Process finished with exit code 0
