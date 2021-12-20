@@ -220,6 +220,8 @@ public class AssociationPattern {
     }
 
     public void patternFreq_cal(){
+        Map<String, Integer> currPatternToFreq = new HashMap<>();
+        totalPattern = 0;
         int n = inputVariables.length;
         inputColIdx = new int[n];
         StringBuilder input = new StringBuilder();
@@ -246,21 +248,25 @@ public class AssociationPattern {
                 }
             }
             String currPattern = sb.toString();
-            patternToFreq.put(currPattern, patternToFreq.getOrDefault(currPattern,0)+1);
+            currPatternToFreq.put(currPattern, currPatternToFreq.getOrDefault(currPattern,0)+1);
         }
-        patternType = new String[patternToFreq.size()]; // "0,1  1,0  1,1  1,2
-        paterrnStatus = new String[patternToFreq.size()]; // "Threshold Past ? Yes : No"
-        for(String key : patternToFreq.keySet()){
-            totalPattern += patternToFreq.get(key);
+        patternType = new String[currPatternToFreq.size()]; // "0,1  1,0  1,1  1,2
+        paterrnStatus = new String[currPatternToFreq.size()]; // "Threshold Past ? Yes : No"
+        for(String key : currPatternToFreq.keySet()){
+            totalPattern += currPatternToFreq.get(key);
         }
-        patternProb = new double[patternToFreq.size()];
+        patternProb = new double[currPatternToFreq.size()];
         int i = 0;
-        for(String key : patternToFreq.keySet()){
+
+        for(String key : currPatternToFreq.keySet()){
             patternType[i] = key;
-            patternProb[i] = (patternToFreq.get(key)+0.0)/(double)totalPattern;
-            //System.out.println(key + " " + patternToFreq.get(key) +  "  " + totalPattern);
+            patternProb[i] = (currPatternToFreq.get(key)+0.0)/(double)totalPattern;
+            System.out.println(key + " " + currPatternToFreq.get(key) +  "  " + totalPattern);
             i++;
         }
+
+        patternToFreq = currPatternToFreq ;
+
         //Threshold Test
         for(int j=0; j<patternProb.length; j++){
             if(patternProb[j] > threshold){
@@ -268,6 +274,7 @@ public class AssociationPattern {
             }else{
                 paterrnStatus[j] = "No";
             }
+            System.out.println("patternProb = " + patternProb[j] + "-----" + "threshold = " + threshold);
         }
         thresholdTestPrint(paterrnStatus);
         System.out.println("-----------------------------Statiscally Significant Test-------------------------");
@@ -294,7 +301,7 @@ public class AssociationPattern {
     private void staticSignificantTest(String pattern) {
          System.out.println("----------------------- Test pattern: (" + pattern + ") --------------------------------");
          inValues = pattern.split(",");
-         double left = leftHandSide(totalPattern, inValues);
+         double left = leftHandSide(totalPattern, inputValues);
          System.out.println("  = " + left);
          System.out.print("values : ");
          for(String var : inValues){
@@ -316,13 +323,13 @@ public class AssociationPattern {
 
     // MI(x1, x2, ..., xn)
     public  double leftHandSide(double N, String[] vals) {
-        System.out.print("Left Hand Side: MI(" + inputExpression + ")");
+        System.out.println("Left Hand Side: MI(" + inputExpression + ")");
         double result = 0;
         double y = 1;
         for(int i=0; i<vals.length; i++){
             int col = inputColIdx[i];
             y *= (colToFreq[col].get(vals[i])+0.0)/totalPattern;
-            //System.out.println(colToFreq[col].get(vals[i]) + " ---!!-- " + ((colToFreq[col].get(vals[i])+0.0)/totalPattern));
+            System.out.println(colToFreq[col].get(vals[i]) + " ---!!-- " + ((colToFreq[col].get(vals[i])+0.0)/totalPattern));
         }
         y = termProb/y;
         //System.out.println("y = " + y);
