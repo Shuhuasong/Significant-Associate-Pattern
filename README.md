@@ -98,19 +98,20 @@ if there are A, B, C, D, E, F 6 columns, the program should permute all the 3rd 
 <img src='https://recordit.co/NU6wYDlBfq.gif' width='600' alt='Video Walkthrough' />
 
 ###      Improving Version
-<img src='http://g.recordit.co/iry8W9TJeG.gif' width='600' alt='Video Walkthrough' />
+
+<img src='https://recordit.co/kjkgcHcOTf.gif' width='600' alt='Video Walkthrough' />
+
 
 ## 5. how to run the code?
       In IntelliJ IDE: 
       1) Place the input file under the src folder
-      2) Configure the input parameter with 4 parameters,
+      2) Configure the input parameter with 3 parameters,
       
       1st parameter: the name of input file
       2nd parameter: the number of threshold
-      3rd parameter: the pattern expression
-      4th parameter: the number of order
+      3rd parameter: the number of order
       
-      eg.  inputData1.txt 0.13 Pr(B:0,C:0,D:0) 3
+      eg.  inputData1.txt 0.13 3
       
       Please look at the video walkthrough
 
