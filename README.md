@@ -80,17 +80,17 @@ if there are A, B, C, D, E, F 6 columns, the program should permute all the 3rd 
         } 
         
   
-    //Produce all the combinations of patterns from all the columns, e.g. "BCD","CDE","CDE",....
-    
+       //Produce all the combinations of patterns from all the columns, e.g. "BCD","CDE","CDE",....
+       //List<Character> colLetters = {'B', 'C', 'D', 'E', 'F'}
        private void backtrack(int start, int numOrder,  StringBuilder sb, Set<String> allPatterns) {
            if(numOrder==0){
                allPatterns.add(sb.toString());
                return;
            }
            for(int i=start; i<colLetters.length; i++){
-               sb.append(colLetters[i]);
+               sb.append(colLetters[i]); // sb = "BCD"
                backtrack(i+1, numOrder-1, sb, allPatterns);
-               sb.deleteCharAt(sb.length()-1);
+               sb.deleteCharAt(sb.length()-1); // sb = "BC"
            }
        }
     
