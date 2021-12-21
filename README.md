@@ -109,7 +109,9 @@ if there are A, B, C, D, E, F 6 columns, the program should permute all the 3rd 
 ****************************************************************************
 ### I.	Data Structure
 ****************************************************************************
-         AssociationPattern class
+   ####     AssociationPattern class
+   ##### Variables 
+   
 -	(int) numRows    
 -	(int) numCols
 -	(double) threshold
@@ -123,14 +125,25 @@ if there are A, B, C, D, E, F 6 columns, the program should permute all the 3rd 
 -	String[] patternStatus: a String array to store the pattern status. E.g “Yes”, “No”
 -	TreeSet<String> allExprPatterns: store all the expression of patterns. E.g Pr(B:0,C:0,D:0)
 -	TreeMap<String, Integer> patternToAllFreq: a mapping between the pattern and frequency. E.g  patternToAllFreq.put(“Pr(B:0, C:1))”, 2)
-Methods:
+   
+   #####     Methods: 
+   
 -	loadData() : read from input file and write it into dataAry and nummary;
   store all the columns’ name and mapping them into a unique letter  representation(colToLetter, letterToCol); 
 And mapping the column to index by using map colToIndex;
--	parseExpression(String expression) : parse the probality, e.g. Pr(B:0,C:1); extract the variable B, C (array variables) and the corresponding values 0 and 1(array values) ;
--	patternFreq_cal() : calculate how many a specified pattern occur , e.g Pr(B:0, C:0)
-
-
+-	parseExpression(String expression) : parse the probality, e.g. Pr(B:1,C:0,D:2); extract the variable B, C, D (array variables) and the corresponding values 0 and 1(array values) ;
+-	patternFreq_cal() : calculate how many a specified pattern occur , e.g Pr(B:1, C:0,D:2), return 2 when pattern (B:1, C:0,D:2) occur 2 times. After calculation, store all the pattern and its' frequency in the map(patternToFreq)
+-  thresholdTestPrint( ) : print the pattern, frequency count, pattern probability, and if it pass the threshold test or not.
+-  staticSignificantTest( ) : If the pattern pass the threshold test, continue to the second step to test if the pattern pass independent test.
+-  leftHandSide( ) : compute the information measurement, e.g.  IM(B:0, C:0, D:2) = log_2(P(B C D)/(P(B)*P(C)*P(D)))
+-  rightHandSide( ) : compute maximum entropy, system entropy, Chi-Square, and finally get : RHS = [1/pr(x1, x2, ..., xn)]*(Chi-Square/2*N)^[(E/E')^(O/2)].
+-  getMaxEntropy( ) - E': get the maximum entropy possible for system: Max_Entropy = log_2(# of combination of states among all the variables)     
+                      e.g. the possible states for each column is (B C D) = (2 3 4), then max_entropy = log_2(2*3*4) 
+-  getSystemEntropy( ) - E^ : get the entropy of system: System_Entropy = - SUM_i (Pr_i * log_2(Pr_i))
+                      e.g. Pr(B:1,C:0,D:2) ==> system_entropy = 5*(2/250)log_2(250/) + (40/250)*log_2(250/40) + (2*100/250*log_2(250/100)                
+-  getChi_Square( ) : compute: Chi-square = (Oi-ei)^2/ei, Oi = N * Pr(B:1,C:0,D:2), ei = N * Pr(B:1) * Pr(C:0) * Pr(D:2)
+-  getPatternPermute( ) : permuate all the possible combination of patterns given all the columns, e.g. given columns list = {B, C, D, E, F), when the orderNumber is 2, the function will returen : results = {BC, BD, BE, BF, CD, CE, CF, DE, DF, EF }
+-  backtrack( ) : use recursion to permute all the possible combination of patterns
 
 ## 5. how to run the code?
       In IntelliJ IDE: 
