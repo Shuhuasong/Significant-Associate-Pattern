@@ -334,11 +334,8 @@ public class AssociationPattern {
            // System.out.println(colToFreq[col].get(vals[i]) + "--!-- " + vals[i] + " ---!-- " + ((colToFreq[col].get(vals[i])+0.0)/totalPattern));
         }
         y = termProb/y;
-        //System.out.println("y = " + y);
-       // double N = (Math.pow(250, 2))/(Math.pow(44, 2));
         result = Math.log(y)/Math.log(2); //
         result = Math.round(result*10000.0)/10000.0;
-       // System.out.println("leftHandSide = " + result);
         return result;
     }
 
@@ -354,7 +351,6 @@ public class AssociationPattern {
         double O = (inputVariables.length+0.0)/2; //
         System.out.println("O/2 = " + O);
         double expo = Math.pow((E_sysEntropy+0.0)/E_maxEntropy, O);
-        //expo = Math.round(expo*10000.0)/10000.0;
         System.out.println("(E^/E')^(O/2) = " + expo);
         double temp_chi = 0.0;
         if(numOrder==2){
@@ -366,9 +362,7 @@ public class AssociationPattern {
         }
         System.out.println("Chi-square/2N = " + (chi_square/(2.0*N)));
         System.out.println("1/Pr = " + 1/pr);
-        //result = (chi_square/(2.0*N));
-        //result = Math.round(result*10000.0)/10000.0;
-         System.out.println("(Chi-square/2N)^(E^/E')^(O/2) = " + temp_chi);
+        System.out.println("(Chi-square/2N)^(E^/E')^(O/2) = " + temp_chi);
         System.out.println("rightHandSide = " + result);
         return result;
     }
@@ -390,9 +384,6 @@ public class AssociationPattern {
         int k = 0;
         for(String pattern : patternToFreq.keySet()){
             elems[k++] = patternToFreq.get(pattern);;
-        }
-        for(int e : elems){
-            //System.out.println(e + " --&&--");
         }
         double sysEntropy = 0;
         for(int elem : elems){
@@ -428,7 +419,6 @@ public class AssociationPattern {
         int i = 0;
         for(int c=1; c<numCols; c++){
             colNumStates[c] = Integer.parseInt(splits[i]);
-           // System.out.println( "col = " + colNumStates[c]);
             i++;
         }
     }
@@ -519,7 +509,7 @@ public class AssociationPattern {
         System.out.println("------------------#########################-------------------");
 
         int total = pattern.totalPattern;
-       // System.out.println("Total = " + total);
+        // System.out.println("Total = " + total);
 
         Map<String, String> colToLetter = pattern.colToLetter;
         for(String k : colToLetter.keySet()){
@@ -529,54 +519,7 @@ public class AssociationPattern {
         for(String pat : allExprPatterns){
             double  expressProb = pattern.parseExpression(pat);
             pattern.patternFreq_cal();
-       /*     String[] inputVariables = pattern.inputVariables;
-            String[] inputValues = pattern.inputValues;
-            Map<String, String> letterToCol = pattern.letterToCol;
-
-            StringBuilder sb = new StringBuilder();
-            sb.append("Pr(");
-            for(int i=0; i<inputVariables.length; i++){
-                sb.append(letterToCol.get(inputVariables[i]) + ":" + inputValues[i] + ", ");
-            }
-            sb.deleteCharAt(sb.length()-1);
-            sb.append(")");
-            String formalInput = sb.toString(); */
         }
-
-/*
-        System.out.println( "expressProb = " + expressProb);
-        System.out.println("Given threshold " + threshold + ", evaluate probability " + expression + " ? ");
-        System.out.println("Step1 test:  Is " + formalInput + " > " + threshold);
-        System.out.println(expression + " = "  +  formalInput  + " = " + expressProb );
-        System.out.println("Answer: ");
-        if(expressProb > threshold){
-            System.out.println(expression + " > " + "threshold");
-            System.out.println("Passing the first test for support messure!");
-            System.out.println("Please evaluate the level of depdendency in terms of mutual information measure in the next step.");
-        }else{
-            System.out.println(expression + " < " + "threshold");
-            System.out.println("The first test is fail, don't need to move forward!");
-            System.exit(0);
-        }
-
-        pattern.getMaxEntropy(total);
-        pattern.getSystemEntropy(total);
-        pattern.getChi_Square(total);
-
-        double rightHand = pattern.rightHandSide(total);
-        double leftHand = pattern.leftHandSide(total);
-        System.out.println("Left Hand Side = " + leftHand);
-        System.out.println("Right Hand Side = " + rightHand);
-        if(leftHand < rightHand){
-            System.out.println("Left Hand Side < Right Hand Side");
-            System.out.println("Conclusion: " + expression + " is not a statiscally significant association pattern because it fails" +
-                    " the independency test");
-        }else{
-            System.out.println("Left Hand Side > Right Hand Side");
-            System.out.println("Conclusion: " + expression + " is a statiscally significant association pattern because it passes" +
-                    " the independency test");
-        }
- */
         inputFile.close();
     }
 
