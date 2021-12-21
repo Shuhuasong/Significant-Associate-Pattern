@@ -1,6 +1,6 @@
 # Data Mining & Warehousing
 
-# Project 3 - *Discovery Significant Associate Pattern*
+# *Discovery Significant Associate Pattern*
 
 ## 1. What the problem is solving ? 
 
