@@ -138,14 +138,6 @@ public class AssociationPattern {
             }
             System.out.println();
         }
-
-
-       /* for(int i = 0; i < numRows; ++i) {
-            for(int j = 0; j < numCols; ++j) {
-                System.out.print(numAry[i][j] + "                    ");
-            }
-            System.out.println();
-        } */
     }
 
     public double parseExpression(String expression){
@@ -184,7 +176,6 @@ public class AssociationPattern {
        3 - D--2
          */
         int sum = 0;
-        //double expressProb = 0.0;
         for(int r=1; r<numRows; r++){
             boolean match = true;
             for(int k=0; k<n; k++){
