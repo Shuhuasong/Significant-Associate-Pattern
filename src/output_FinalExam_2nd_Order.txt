@@ -114,11 +114,12 @@ Order       Pattern Variables        Number of permutation
 2             (C D )                          4
 -----------------------------------Threshold Test---------------------------------
 
-Pattern(B,C)     Frequency       Passing Threshold Test
-0,0                  15             Yes
-0,1                  40             Yes
-1,0                  15             Yes
-1,1                  30             Yes
+Total = 100
+Pattern(B,C)     Frequency Count       Pattern Probability        Passing Threshold Test
+0,0                  15                   0.15                     Yes
+0,1                  40                   0.4                     Yes
+1,0                  15                   0.15                     Yes
+1,1                  30                   0.3                     Yes
 -----------------------------Statiscally Significant Test-------------------------
 ----------------------- Test pattern: (0,0) --------------------------------
 Left Hand Side: MI(B,C)  = -0.1375
@@ -202,11 +203,12 @@ Conclusion: B,C is not a statiscally significant association pattern because it 
 ------------------------------------------------------------------------
 -----------------------------------Threshold Test---------------------------------
 
-Pattern(B,D)     Frequency       Passing Threshold Test
-0,0                  30             Yes
-0,1                  25             Yes
-1,0                  15             Yes
-1,1                  30             Yes
+Total = 100
+Pattern(B,D)     Frequency Count       Pattern Probability        Passing Threshold Test
+0,0                  30                   0.3                     Yes
+0,1                  25                   0.25                     Yes
+1,0                  15                   0.15                     Yes
+1,1                  30                   0.3                     Yes
 -----------------------------Statiscally Significant Test-------------------------
 ----------------------- Test pattern: (0,0) --------------------------------
 Left Hand Side: MI(B,D)  = 0.2775
@@ -290,11 +292,12 @@ Conclusion: B,D is a statiscally significant association pattern because it pass
 ------------------------------------------------------------------------
 -----------------------------------Threshold Test---------------------------------
 
-Pattern(C,D)     Frequency       Passing Threshold Test
-0,0                  10             No
-0,1                  20             Yes
-1,0                  35             Yes
-1,1                  35             Yes
+Total = 100
+Pattern(C,D)     Frequency Count       Pattern Probability        Passing Threshold Test
+0,0                  10                   0.1                     No
+0,1                  20                   0.2                     Yes
+1,0                  35                   0.35                     Yes
+1,1                  35                   0.35                     Yes
 -----------------------------Statiscally Significant Test-------------------------
 ----------------------- Test pattern: (0,1) --------------------------------
 Left Hand Side: MI(C,D)  = 0.2775

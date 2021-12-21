@@ -292,9 +292,11 @@ public class AssociationPattern {
         int k = 0;
         System.out.println("-----------------------------------Threshold Test---------------------------------");
         System.out.println();
-        System.out.println("Pattern" + "(" + inputExpression + ")     Frequency       Passing Threshold Test");
+        System.out.println("Total = " + totalPattern);
+        System.out.println("Pattern" + "(" + inputExpression + ")     Frequency Count       Pattern Probability        Passing Threshold Test");
         for(String key : patternToFreq.keySet()){
-            System.out.println(key + "                  " + patternToFreq.get(key) + "             " + paterrnStatus[k++]);
+            double prob = (patternToFreq.get(key)*1.0)/totalPattern;
+            System.out.println(key + "                  " + patternToFreq.get(key) + "                   " + prob + "                     "+ paterrnStatus[k++]);
         }
     }
 
