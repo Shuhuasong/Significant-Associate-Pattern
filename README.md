@@ -95,11 +95,8 @@ if there are A, B, C, D, E, F 6 columns, the program should permute all the 3rd 
     
 ## 4. Software Solution
 ###      Video Walkthrough
+
 <img src='https://recordit.co/W3v1uFJ3NO.gif' width='600' alt='Video Walkthrough' />
-
-###      Improving Version
-
-<img src='https://recordit.co/kjkgcHcOTf.gif' width='600' alt='Video Walkthrough' />
 
 ###      Last Assignment-Q3
 
