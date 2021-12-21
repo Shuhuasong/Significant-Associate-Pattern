@@ -106,8 +106,9 @@ if there are A, B, C, D, E, F 6 columns, the program should permute all the 3rd 
 
 <img src='https://recordit.co/kaq6drkYHw.gif' width='600' alt='Video Walkthrough' />
 
-
+****************************************************************************
 ### I.	Data Structure
+****************************************************************************
          AssociationPattern class
 -	(int) numRows    
 -	(int) numCols
@@ -128,7 +129,7 @@ Methods:
 And mapping the column to index by using map colToIndex;
 -	parseExpression(String expression) : parse the probality, e.g. Pr(B:0,C:1); extract the variable B, C (array variables) and the corresponding values 0 and 1(array values) ;
 -	patternFreq_cal() : calculate how many a specified pattern occur , e.g Pr(B:0, C:0)
-![image](https://user-images.githubusercontent.com/36608134/146879931-193f7782-3665-473a-9a45-97a9422af208.png)
+
 
 
 ## 5. how to run the code?
