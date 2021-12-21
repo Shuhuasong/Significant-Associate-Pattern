@@ -76,7 +76,8 @@ if there are A, B, C, D, E, F 6 columns, the program should permute all the 3rd 
         for(String pat: allExprPatterns){
             System.out.println("Pattern-expression = " + pat);
         }
-        return allExprPatterns;   } 
+        return allExprPatterns;   
+        } 
         
   
     //Produce all the combinations of patterns from all the columns, e.g. "BCD","CDE","CDE",....
