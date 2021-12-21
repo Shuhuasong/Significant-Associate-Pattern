@@ -106,9 +106,8 @@ if there are A, B, C, D, E, F 6 columns, the program should permute all the 3rd 
 
 <img src='https://recordit.co/kaq6drkYHw.gif' width='600' alt='Video Walkthrough' />
 
-***************************************************
+
 ### I.	Data Structure
-*****************************************************
          AssociationPattern class
 -	(int) numRows    
 -	(int) numCols
