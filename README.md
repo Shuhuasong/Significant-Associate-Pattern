@@ -106,6 +106,32 @@ if there are A, B, C, D, E, F 6 columns, the program should permute all the 3rd 
 
 <img src='https://recordit.co/kaq6drkYHw.gif' width='600' alt='Video Walkthrough' />
 
+***************************************************
+I.	Data Structure
+*****************************************************
+         AssociationPattern class
+-	(int) numRows    
+-	(int) numCols
+-	(double) threshold
+-	(int) numOrder
+-	(HashMap) colToFreq :  a map array, to store the total frequency for each state on each column
+-	(HashMap) colToLetter: a mapping between column name and letter 
+-	(HashMap) colToIndex: a mapping between column letter representation and Index 
+-	(HashMap) PatternToFreq: a mapping between pattern and number of showing frequency
+-	Int[] colNumStates: store the total number of states for each column
+-	String[] patternType: a String array to store all the patterns. E.g. “0,1”,    “1,0”,   “1,1”   1,2
+-	String[] patternStatus: a String array to store the pattern status. E.g “Yes”, “No”
+-	TreeSet<String> allExprPatterns: store all the expression of patterns. E.g Pr(B:0,C:0,D:0)
+-	TreeMap<String, Integer> patternToAllFreq: a mapping between the pattern and frequency. E.g  patternToAllFreq.put(“Pr(B:0, C:1))”, 2)
+Methods:
+-	loadData() : read from input file and write it into dataAry and nummary;
+  store all the columns’ name and mapping them into a unique letter  representation(colToLetter, letterToCol); 
+And mapping the column to index by using map colToIndex;
+-	parseExpression(String expression) : parse the probality, e.g. Pr(B:0,C:1); extract the variable B, C (array variables) and the corresponding values 0 and 1(array values) ;
+-	patternFreq_cal() : calculate how many a specified pattern occur , e.g Pr(B:0, C:0)
+![image](https://user-images.githubusercontent.com/36608134/146879931-193f7782-3665-473a-9a45-97a9422af208.png)
+
+
 ## 5. how to run the code?
       In IntelliJ IDE: 
       1) Place the input file under the src folder
