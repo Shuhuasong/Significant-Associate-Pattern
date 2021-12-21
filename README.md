@@ -105,6 +105,9 @@ if there are A, B, C, D, E, F 6 columns, the program should permute all the 3rd 
 
 <img src='https://recordit.co/TMtP0F66aQ.gif' width='600' alt='Video Walkthrough' />
 
+###    User specify the frequency count
+
+<img src='https://recordit.co/kaq6drkYHw.gif' width='600' alt='Video Walkthrough' />
 
 ## 5. how to run the code?
       In IntelliJ IDE: 
