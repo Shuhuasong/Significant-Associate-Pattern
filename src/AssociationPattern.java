@@ -158,7 +158,7 @@ public class AssociationPattern {
              while(start < end && expression.charAt(end) != ')'){
                  end--;
              }
-             if(start < end){
+             if(start < end){ //subExpre = "B:0,C:1"
                  subExpre = expression.substring(start+1, end);
                  //System.out.println("SubExpress = " + subExpre);
                  break;
@@ -174,10 +174,10 @@ public class AssociationPattern {
             String[] terms = term.split(":");
             colVars[i] = terms[0];
             values[i] = terms[1];
-            //System.out.println(colVars[i] + "--" + values[i]);
+            //System.out.println(colVars[i] + "--***&&***--" + values[i]);
         }
         inputVariables = colVars.clone();
-        inputValues = values.clone();
+        //inputValues = values.clone();
         /*
        1 - B--1
        2 - C--0
@@ -228,7 +228,7 @@ public class AssociationPattern {
         for(int i=0; i<n; i++){
             input.append(inputVariables[i]).append(",");
             inputColIdx[i] = colToIndex.get(inputVariables[i]);
-            System.out.println("Column: " + inputVariables[i] + "---- " + "Index: " + inputColIdx[i]);
+           // System.out.println("Column: " + inputVariables[i] + "---- " + "Index: " + inputColIdx[i]);
             //System.out.println(inputColIdx[i] + "--****--" + inputVariables[i]);
         }
         input.deleteCharAt(input.length()-1);
@@ -261,7 +261,7 @@ public class AssociationPattern {
         for(String key : currPatternToFreq.keySet()){
             patternType[i] = key;
             patternProb[i] = (currPatternToFreq.get(key)+0.0)/(double)totalPattern;
-            System.out.println(key + " " + currPatternToFreq.get(key) +  "  " + totalPattern);
+            //System.out.println(key + " " + currPatternToFreq.get(key) +  "  " + totalPattern);
             i++;
         }
 
@@ -274,7 +274,7 @@ public class AssociationPattern {
             }else{
                 paterrnStatus[j] = "No";
             }
-            System.out.println("patternProb = " + patternProb[j] + "-----" + "threshold = " + threshold);
+            //System.out.println("patternProb = " + patternProb[j] + "-----" + "threshold = " + threshold);
         }
         thresholdTestPrint(paterrnStatus);
         System.out.println("-----------------------------Statiscally Significant Test-------------------------");
@@ -301,7 +301,7 @@ public class AssociationPattern {
     private void staticSignificantTest(String pattern) {
          System.out.println("----------------------- Test pattern: (" + pattern + ") --------------------------------");
          inValues = pattern.split(",");
-         double left = leftHandSide(totalPattern, inputValues);
+         double left = leftHandSide(totalPattern, inValues);
          System.out.println("  = " + left);
          System.out.print("values : ");
          for(String var : inValues){
@@ -323,13 +323,13 @@ public class AssociationPattern {
 
     // MI(x1, x2, ..., xn)
     public  double leftHandSide(double N, String[] vals) {
-        System.out.println("Left Hand Side: MI(" + inputExpression + ")");
+        System.out.print("Left Hand Side: MI(" + inputExpression + ")");
         double result = 0;
         double y = 1;
         for(int i=0; i<vals.length; i++){
             int col = inputColIdx[i];
             y *= (colToFreq[col].get(vals[i])+0.0)/totalPattern;
-            System.out.println(colToFreq[col].get(vals[i]) + " ---!!-- " + ((colToFreq[col].get(vals[i])+0.0)/totalPattern));
+           // System.out.println(colToFreq[col].get(vals[i]) + "--!-- " + vals[i] + " ---!-- " + ((colToFreq[col].get(vals[i])+0.0)/totalPattern));
         }
         y = termProb/y;
         //System.out.println("y = " + y);
@@ -350,17 +350,23 @@ public class AssociationPattern {
         double ESys_Emax = (E_sysEntropy/E_maxEntropy);
         System.out.println( "E^/E' = " + ESys_Emax);
         double O = (inputVariables.length+0.0)/2; //
-        System.out.println("O = " + O);
+        System.out.println("O/2 = " + O);
         double expo = Math.pow((E_sysEntropy+0.0)/E_maxEntropy, O);
         //expo = Math.round(expo*10000.0)/10000.0;
-        System.out.println("expo = " + expo);
-        double temp_chi = Math.pow((chi_square/(2.0*N)), expo);
+        System.out.println("(E^/E')^(O/2) = " + expo);
+        double temp_chi = 0.0;
+        if(numOrder==2){
+            temp_chi = (chi_square/(2.0*N));
+            result = temp_chi;
+        }else{
+            temp_chi = Math.pow((chi_square/(2.0*N)), expo);
+            result = (1/pr) * temp_chi;
+        }
         System.out.println("Chi-square/2N = " + (chi_square/(2.0*N)));
         System.out.println("1/Pr = " + 1/pr);
-        result = (1/pr) * temp_chi;
         //result = (chi_square/(2.0*N));
         //result = Math.round(result*10000.0)/10000.0;
-         System.out.println("temp = " + temp_chi);
+         System.out.println("(Chi-square/2N)^(E^/E')^(O/2) = " + temp_chi);
         System.out.println("rightHandSide = " + result);
         return result;
     }
@@ -372,7 +378,7 @@ public class AssociationPattern {
             totleCombState *= colToFreq[c].size();
         }
         double result = Math.log(totleCombState)/Math.log(2);
-        result = Math.round(result*10000.0)/10000.0;
+        //result = Math.round(result*10000.0)/10000.0;
         System.out.println("maxEntropy = " + result);
         return result;
     }
@@ -383,9 +389,9 @@ public class AssociationPattern {
         for(String pattern : patternToFreq.keySet()){
             elems[k++] = patternToFreq.get(pattern);;
         }
-        //for(int e : elems){
-        //    System.out.println(e + " --&&--");
-        //}
+        for(int e : elems){
+            //System.out.println(e + " --&&--");
+        }
         double sysEntropy = 0;
         for(int elem : elems){
             sysEntropy += (elem*1.0/N) * Math.log(N*1.0/elem)/Math.log(2);
@@ -406,7 +412,9 @@ public class AssociationPattern {
         ei = Double.parseDouble(decimalFormat.format(ei));
         double result = Math.pow(Oi-ei, 2)/ei;
         result = Math.round(result*10000.0)/10000.0;
-        System.out.println("Oi = " + Oi + "; ei = " + ei + " termProb = " + termProb);
+        System.out.println("Oi = " + Oi );
+        System.out.println("ei = " + ei);
+        System.out.println(" termProb = " + termProb);
         System.out.println("Chi-square = " + result);
         return result;
     }
