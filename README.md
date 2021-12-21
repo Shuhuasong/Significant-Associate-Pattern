@@ -137,6 +137,7 @@ And mapping the column to index by using map colToIndex;
 -  staticSignificantTest( ) : If the pattern pass the threshold test, continue to the second step to test if the pattern pass independent test.
 -  leftHandSide( ) : compute the information measurement, e.g.  IM(B:0, C:0, D:2) = log_2(P(B C D)/(P(B)*P(C)*P(D)))
 -  rightHandSide( ) : compute maximum entropy, system entropy, Chi-Square, and finally get : RHS = [1/pr(x1, x2, ..., xn)]*(Chi-Square/2*N)^[(E/E')^(O/2)].
+                      Note: when the order number is 2: RHS = Chi-Square/2n !!!
 -  getMaxEntropy( ) - E': get the maximum entropy possible for system: Max_Entropy = log_2(# of combination of states among all the variables)     
                       e.g. the possible states for each column is (B C D) = (2 3 4), then max_entropy = log_2(2*3*4) 
 -  getSystemEntropy( ) - E^ : get the entropy of system: System_Entropy = - SUM_i (Pr_i * log_2(Pr_i))
