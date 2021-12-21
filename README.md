@@ -48,51 +48,51 @@ if there are A, B, C, D, E, F 6 columns, the program should permute all the 3rd 
        
         
         private Set<String> getPatternPermute(int numOrder) {
-        Set<String> allPatterns = new HashSet<>();
-        StringBuilder sb = new StringBuilder();
-        backtrack(1, numOrder, sb, allPatterns);
-        System.out.println("All combination of patterns: size = " + allPatterns.size());
-        for(String p : allPatterns){
-            System.out.println("Pattern-letter = " + p);
-        }
-        
+           Set<String> allPatterns = new HashSet<>();
+           StringBuilder sb = new StringBuilder();
+           backtrack(1, numOrder, sb, allPatterns);
+           System.out.println("All combination of patterns: size = " + allPatterns.size());
+           for(String p : allPatterns){
+               System.out.println("Pattern-letter = " + p);
+           }
+
         //Produce all the possible probability of pattern according to the all the pattern combinations
         //e.g. "BCD"--> "Pr(B:0,C:0,D:0)"
-        
-        allExprPatterns = new HashSet<>();
-        for(String p : allPatterns){
-            StringBuilder comSb = new StringBuilder();
-            char[] letters = p.toCharArray();
-            comSb.append("Pr(");
-            for(char a : letters){
-                comSb.append(a);
-                comSb.append(":0,");
-            }
-            comSb.deleteCharAt(comSb.length()-1);
-            comSb.append(")");
-            allExprPatterns.add(comSb.toString());
-        }
-        System.out.println("size = " + allExprPatterns.size());
-        for(String pat: allExprPatterns){
-            System.out.println("Pattern-expression = " + pat);
-        }
-        return allExprPatterns;   
-    } 
+
+           allExprPatterns = new HashSet<>();
+           for(String p : allPatterns){
+               StringBuilder comSb = new StringBuilder();
+               char[] letters = p.toCharArray();
+               comSb.append("Pr(");
+               for(char a : letters){
+                   comSb.append(a);
+                   comSb.append(":0,");
+               }
+               comSb.deleteCharAt(comSb.length()-1);
+               comSb.append(")");
+               allExprPatterns.add(comSb.toString());
+           }
+           System.out.println("size = " + allExprPatterns.size());
+           for(String pat: allExprPatterns){
+               System.out.println("Pattern-expression = " + pat);
+           }
+           return allExprPatterns;   
+        } 
         
   
     //Produce all the combinations of patterns from all the columns, e.g. "BCD","CDE","CDE",....
     
-    private void backtrack(int start, int numOrder,  StringBuilder sb, Set<String> allPatterns) {
-        if(numOrder==0){
-            allPatterns.add(sb.toString());
-            return;
-        }
-        for(int i=start; i<colLetters.length; i++){
-            sb.append(colLetters[i]);
-            backtrack(i+1, numOrder-1, sb, allPatterns);
-            sb.deleteCharAt(sb.length()-1);
-        }
-    }
+       private void backtrack(int start, int numOrder,  StringBuilder sb, Set<String> allPatterns) {
+           if(numOrder==0){
+               allPatterns.add(sb.toString());
+               return;
+           }
+           for(int i=start; i<colLetters.length; i++){
+               sb.append(colLetters[i]);
+               backtrack(i+1, numOrder-1, sb, allPatterns);
+               sb.deleteCharAt(sb.length()-1);
+           }
+       }
     
 ## 4. Software Solution
 ###      Video Walkthrough
