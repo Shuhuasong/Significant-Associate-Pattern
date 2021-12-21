@@ -1,0 +1,1060 @@
+threshoud = 0.11
+states = 6 4 2 3 5
+---------------------------------------------------------------------------
+ItemId(A)             Bread(B)             Milk(C)             Diapers(D)             Beer(E)             Eggs(F)
+1                   0                   1                   1                   0                   1
+2                   1                   0                   1                   1                   2
+3                   2                   2                   1                   1                   3
+4                   5                   1                   0                   1                   4
+5                   1                   0                   1                   0                   1
+6                   9                   1                   1                   0                   2
+7                   1                   0                   1                   2                   0
+8                   3                   1                   1                   0                   2
+9                   0                   1                   0                   0                   1
+10                   1                   3                   0                   2                   3
+11                   1                   0                   0                   1                   2
+12                   5                   2                   0                   1                   4
+13                   1                   0                   6                   3                   1
+14                   3                   1                   1                   0                   3
+15                   1                   3                   1                   2                   0
+16                   4                   1                   1                   0                   2
+------------------#########################-------------------
+All combinations of 2_Order patterns(column representation): size = 10
+Pattern-letter = BC
+Pattern-letter = BD
+Pattern-letter = BE
+Pattern-letter = BF
+Pattern-letter = CD
+Pattern-letter = CE
+Pattern-letter = CF
+Pattern-letter = DE
+Pattern-letter = DF
+Pattern-letter = EF
+
+Order       Pattern Variables        Number of permutation
+2             (B C )                          24
+2             (B D )                          12
+2             (B E )                          18
+2             (B F )                          30
+2             (C D )                          8
+2             (C E )                          12
+2             (C F )                          20
+2             (D E )                          6
+2             (D F )                          10
+2             (E F )                          15
+Alert : the data for this data point is not valid!!!
+-----------------------------------Threshold Test---------------------------------
+
+Total = 16
+Pattern(B,C)     Frequency Count       Pattern Probability        Passing Threshold Test
+                  1                   0.0625                     No
+0,1                  2                   0.125                     Yes
+1,0                  5                   0.3125                     Yes
+2,2                  1                   0.0625                     No
+3,1                  2                   0.125                     Yes
+1,3                  2                   0.125                     Yes
+4,1                  1                   0.0625                     No
+5,1                  1                   0.0625                     No
+5,2                  1                   0.0625                     No
+-----------------------------Statiscally Significant Test-------------------------
+----------------------- Test pattern: (0,1) --------------------------------
+Left Hand Side: MI(B,C)  = 1.1926
+values : 0  1
+Oi = 2.0
+ei = 0.875
+ termProb = 0.125
+Chi-square = 1.4464
+maxEntropy = 4.807354922057604
+SysEntropy = 2.8994
+E^/E' = 0.6031175245032716
+O/2 = 1.0
+(E^/E')^(O/2) = 0.6031175245032716
+Chi-square/2N = 0.0452
+1/Pr = 8.0
+(Chi-square/2N)^(E^/E')^(O/2) = 0.0452
+rightHandSide = 0.0452
+Right Hand Side : 0.0452
+Left Hand Side > Right Hand Side
+Conclusion: B,C is a statiscally significant association pattern because it passes the independency test
+------------------------------------------------------------------------
+----------------------- Test pattern: (1,0) --------------------------------
+Left Hand Side: MI(B,C)  = 1.1926
+values : 1  0
+Oi = 5.0
+ei = 2.188
+ termProb = 0.3125
+Chi-square = 3.614
+maxEntropy = 4.807354922057604
+SysEntropy = 2.8994
+E^/E' = 0.6031175245032716
+O/2 = 1.0
+(E^/E')^(O/2) = 0.6031175245032716
+Chi-square/2N = 0.1129375
+1/Pr = 3.2
+(Chi-square/2N)^(E^/E')^(O/2) = 0.1129375
+rightHandSide = 0.1129375
+Right Hand Side : 0.1129375
+Left Hand Side > Right Hand Side
+Conclusion: B,C is a statiscally significant association pattern because it passes the independency test
+------------------------------------------------------------------------
+----------------------- Test pattern: (3,1) --------------------------------
+Left Hand Side: MI(B,C)  = 1.1926
+values : 3  1
+Oi = 2.0
+ei = 0.875
+ termProb = 0.125
+Chi-square = 1.4464
+maxEntropy = 4.807354922057604
+SysEntropy = 2.8994
+E^/E' = 0.6031175245032716
+O/2 = 1.0
+(E^/E')^(O/2) = 0.6031175245032716
+Chi-square/2N = 0.0452
+1/Pr = 8.0
+(Chi-square/2N)^(E^/E')^(O/2) = 0.0452
+rightHandSide = 0.0452
+Right Hand Side : 0.0452
+Left Hand Side > Right Hand Side
+Conclusion: B,C is a statiscally significant association pattern because it passes the independency test
+------------------------------------------------------------------------
+----------------------- Test pattern: (1,3) --------------------------------
+Left Hand Side: MI(B,C)  = 1.1926
+values : 1  3
+Oi = 2.0
+ei = 0.875
+ termProb = 0.125
+Chi-square = 1.4464
+maxEntropy = 4.807354922057604
+SysEntropy = 2.8994
+E^/E' = 0.6031175245032716
+O/2 = 1.0
+(E^/E')^(O/2) = 0.6031175245032716
+Chi-square/2N = 0.0452
+1/Pr = 8.0
+(Chi-square/2N)^(E^/E')^(O/2) = 0.0452
+rightHandSide = 0.0452
+Right Hand Side : 0.0452
+Left Hand Side > Right Hand Side
+Conclusion: B,C is a statiscally significant association pattern because it passes the independency test
+------------------------------------------------------------------------
+Alert : the data for this data point is not valid!!!
+Alert : the data for this data point is not valid!!!
+-----------------------------------Threshold Test---------------------------------
+
+Total = 16
+Pattern(B,D)     Frequency Count       Pattern Probability        Passing Threshold Test
+                  1                   0.0625                     No
+0,0                  1                   0.0625                     No
+0,1                  1                   0.0625                     No
+1,0                  2                   0.125                     Yes
+1,1                  4                   0.25                     Yes
+2,1                  1                   0.0625                     No
+3,1                  2                   0.125                     Yes
+5,0                  2                   0.125                     Yes
+4,1                  1                   0.0625                     No
+1,                  1                   0.0625                     No
+-----------------------------Statiscally Significant Test-------------------------
+----------------------- Test pattern: (1,0) --------------------------------
+Left Hand Side: MI(B,D)  = -0.1293
+values : 1  0
+Oi = 2.0
+ei = 2.188
+ termProb = 0.125
+Chi-square = 0.0162
+maxEntropy = 4.392317422778761
+SysEntropy = 3.125
+E^/E' = 0.7114695271779781
+O/2 = 1.0
+(E^/E')^(O/2) = 0.7114695271779781
+Chi-square/2N = 5.0625E-4
+1/Pr = 8.0
+(Chi-square/2N)^(E^/E')^(O/2) = 5.0625E-4
+rightHandSide = 5.0625E-4
+Right Hand Side : 5.0625E-4
+Left Hand Side < Right Hand Side
+Conclusion: B,D is not a statiscally significant association pattern because it fails the independency test
+------------------------------------------------------------------------
+----------------------- Test pattern: (1,1) --------------------------------
+Left Hand Side: MI(B,D)  = -0.1293
+values : 1  1
+Oi = 4.0
+ei = 4.375
+ termProb = 0.25
+Chi-square = 0.0321
+maxEntropy = 4.392317422778761
+SysEntropy = 3.125
+E^/E' = 0.7114695271779781
+O/2 = 1.0
+(E^/E')^(O/2) = 0.7114695271779781
+Chi-square/2N = 0.001003125
+1/Pr = 4.0
+(Chi-square/2N)^(E^/E')^(O/2) = 0.001003125
+rightHandSide = 0.001003125
+Right Hand Side : 0.001003125
+Left Hand Side < Right Hand Side
+Conclusion: B,D is not a statiscally significant association pattern because it fails the independency test
+------------------------------------------------------------------------
+----------------------- Test pattern: (3,1) --------------------------------
+Left Hand Side: MI(B,D)  = 0.6781
+values : 3  1
+Oi = 2.0
+ei = 1.25
+ termProb = 0.125
+Chi-square = 0.45
+maxEntropy = 4.392317422778761
+SysEntropy = 3.125
+E^/E' = 0.7114695271779781
+O/2 = 1.0
+(E^/E')^(O/2) = 0.7114695271779781
+Chi-square/2N = 0.0140625
+1/Pr = 8.0
+(Chi-square/2N)^(E^/E')^(O/2) = 0.0140625
+rightHandSide = 0.0140625
+Right Hand Side : 0.0140625
+Left Hand Side > Right Hand Side
+Conclusion: B,D is a statiscally significant association pattern because it passes the independency test
+------------------------------------------------------------------------
+----------------------- Test pattern: (5,0) --------------------------------
+Left Hand Side: MI(B,D)  = 1.6781
+values : 5  0
+Oi = 2.0
+ei = 0.625
+ termProb = 0.125
+Chi-square = 3.025
+maxEntropy = 4.392317422778761
+SysEntropy = 3.125
+E^/E' = 0.7114695271779781
+O/2 = 1.0
+(E^/E')^(O/2) = 0.7114695271779781
+Chi-square/2N = 0.09453125
+1/Pr = 8.0
+(Chi-square/2N)^(E^/E')^(O/2) = 0.09453125
+rightHandSide = 0.09453125
+Right Hand Side : 0.09453125
+Left Hand Side > Right Hand Side
+Conclusion: B,D is a statiscally significant association pattern because it passes the independency test
+------------------------------------------------------------------------
+Alert : the data for this data point is not valid!!!
+Alert : the data for this data point is not valid!!!
+-----------------------------------Threshold Test---------------------------------
+
+Total = 16
+Pattern(B,E)     Frequency Count       Pattern Probability        Passing Threshold Test
+                  1                   0.0625                     No
+0,0                  2                   0.125                     Yes
+1,0                  1                   0.0625                     No
+1,1                  2                   0.125                     Yes
+2,1                  1                   0.0625                     No
+1,2                  3                   0.1875                     Yes
+3,0                  2                   0.125                     Yes
+4,0                  1                   0.0625                     No
+5,1                  2                   0.125                     Yes
+1,                  1                   0.0625                     No
+-----------------------------Statiscally Significant Test-------------------------
+----------------------- Test pattern: (0,0) --------------------------------
+Left Hand Side: MI(B,E)  = 1.1926
+values : 0  0
+Oi = 2.0
+ei = 0.875
+ termProb = 0.125
+Chi-square = 1.4464
+maxEntropy = 4.807354922057604
+SysEntropy = 3.2028
+E^/E' = 0.6662291534383246
+O/2 = 1.0
+(E^/E')^(O/2) = 0.6662291534383246
+Chi-square/2N = 0.0452
+1/Pr = 8.0
+(Chi-square/2N)^(E^/E')^(O/2) = 0.0452
+rightHandSide = 0.0452
+Right Hand Side : 0.0452
+Left Hand Side > Right Hand Side
+Conclusion: B,E is a statiscally significant association pattern because it passes the independency test
+------------------------------------------------------------------------
+----------------------- Test pattern: (1,1) --------------------------------
+Left Hand Side: MI(B,E)  = -0.1293
+values : 1  1
+Oi = 2.0
+ei = 2.188
+ termProb = 0.125
+Chi-square = 0.0162
+maxEntropy = 4.807354922057604
+SysEntropy = 3.2028
+E^/E' = 0.6662291534383246
+O/2 = 1.0
+(E^/E')^(O/2) = 0.6662291534383246
+Chi-square/2N = 5.0625E-4
+1/Pr = 8.0
+(Chi-square/2N)^(E^/E')^(O/2) = 5.0625E-4
+rightHandSide = 5.0625E-4
+Right Hand Side : 5.0625E-4
+Left Hand Side < Right Hand Side
+Conclusion: B,E is not a statiscally significant association pattern because it fails the independency test
+------------------------------------------------------------------------
+----------------------- Test pattern: (1,2) --------------------------------
+Left Hand Side: MI(B,E)  = 1.1926
+values : 1  2
+Oi = 3.0
+ei = 1.312
+ termProb = 0.1875
+Chi-square = 2.1718
+maxEntropy = 4.807354922057604
+SysEntropy = 3.2028
+E^/E' = 0.6662291534383246
+O/2 = 1.0
+(E^/E')^(O/2) = 0.6662291534383246
+Chi-square/2N = 0.06786875
+1/Pr = 5.333333333333333
+(Chi-square/2N)^(E^/E')^(O/2) = 0.06786875
+rightHandSide = 0.06786875
+Right Hand Side : 0.06786875
+Left Hand Side > Right Hand Side
+Conclusion: B,E is a statiscally significant association pattern because it passes the independency test
+------------------------------------------------------------------------
+----------------------- Test pattern: (3,0) --------------------------------
+Left Hand Side: MI(B,E)  = 1.1926
+values : 3  0
+Oi = 2.0
+ei = 0.875
+ termProb = 0.125
+Chi-square = 1.4464
+maxEntropy = 4.807354922057604
+SysEntropy = 3.2028
+E^/E' = 0.6662291534383246
+O/2 = 1.0
+(E^/E')^(O/2) = 0.6662291534383246
+Chi-square/2N = 0.0452
+1/Pr = 8.0
+(Chi-square/2N)^(E^/E')^(O/2) = 0.0452
+rightHandSide = 0.0452
+Right Hand Side : 0.0452
+Left Hand Side > Right Hand Side
+Conclusion: B,E is a statiscally significant association pattern because it passes the independency test
+------------------------------------------------------------------------
+----------------------- Test pattern: (5,1) --------------------------------
+Left Hand Side: MI(B,E)  = 1.6781
+values : 5  1
+Oi = 2.0
+ei = 0.625
+ termProb = 0.125
+Chi-square = 3.025
+maxEntropy = 4.807354922057604
+SysEntropy = 3.2028
+E^/E' = 0.6662291534383246
+O/2 = 1.0
+(E^/E')^(O/2) = 0.6662291534383246
+Chi-square/2N = 0.09453125
+1/Pr = 8.0
+(Chi-square/2N)^(E^/E')^(O/2) = 0.09453125
+rightHandSide = 0.09453125
+Right Hand Side : 0.09453125
+Left Hand Side > Right Hand Side
+Conclusion: B,E is a statiscally significant association pattern because it passes the independency test
+------------------------------------------------------------------------
+Alert : the data for this data point is not valid!!!
+-----------------------------------Threshold Test---------------------------------
+
+Total = 16
+Pattern(B,F)     Frequency Count       Pattern Probability        Passing Threshold Test
+                  1                   0.0625                     No
+0,1                  2                   0.125                     Yes
+1,0                  2                   0.125                     Yes
+1,1                  2                   0.125                     Yes
+1,2                  2                   0.125                     Yes
+1,3                  1                   0.0625                     No
+2,3                  1                   0.0625                     No
+3,2                  1                   0.0625                     No
+3,3                  1                   0.0625                     No
+4,2                  1                   0.0625                     No
+5,4                  2                   0.125                     Yes
+-----------------------------Statiscally Significant Test-------------------------
+----------------------- Test pattern: (0,1) --------------------------------
+Left Hand Side: MI(B,F)  = 2.0
+values : 0  1
+Oi = 2.0
+ei = 0.5
+ termProb = 0.125
+Chi-square = 4.5
+maxEntropy = 5.129283016944966
+SysEntropy = 3.375
+E^/E' = 0.6579866988915288
+O/2 = 1.0
+(E^/E')^(O/2) = 0.6579866988915288
+Chi-square/2N = 0.140625
+1/Pr = 8.0
+(Chi-square/2N)^(E^/E')^(O/2) = 0.140625
+rightHandSide = 0.140625
+Right Hand Side : 0.140625
+Left Hand Side > Right Hand Side
+Conclusion: B,F is a statiscally significant association pattern because it passes the independency test
+------------------------------------------------------------------------
+----------------------- Test pattern: (1,0) --------------------------------
+Left Hand Side: MI(B,F)  = 1.1926
+values : 1  0
+Oi = 2.0
+ei = 0.875
+ termProb = 0.125
+Chi-square = 1.4464
+maxEntropy = 5.129283016944966
+SysEntropy = 3.375
+E^/E' = 0.6579866988915288
+O/2 = 1.0
+(E^/E')^(O/2) = 0.6579866988915288
+Chi-square/2N = 0.0452
+1/Pr = 8.0
+(Chi-square/2N)^(E^/E')^(O/2) = 0.0452
+rightHandSide = 0.0452
+Right Hand Side : 0.0452
+Left Hand Side > Right Hand Side
+Conclusion: B,F is a statiscally significant association pattern because it passes the independency test
+------------------------------------------------------------------------
+----------------------- Test pattern: (1,1) --------------------------------
+Left Hand Side: MI(B,F)  = 0.1926
+values : 1  1
+Oi = 2.0
+ei = 1.75
+ termProb = 0.125
+Chi-square = 0.0357
+maxEntropy = 5.129283016944966
+SysEntropy = 3.375
+E^/E' = 0.6579866988915288
+O/2 = 1.0
+(E^/E')^(O/2) = 0.6579866988915288
+Chi-square/2N = 0.001115625
+1/Pr = 8.0
+(Chi-square/2N)^(E^/E')^(O/2) = 0.001115625
+rightHandSide = 0.001115625
+Right Hand Side : 0.001115625
+Left Hand Side > Right Hand Side
+Conclusion: B,F is a statiscally significant association pattern because it passes the independency test
+------------------------------------------------------------------------
+----------------------- Test pattern: (1,2) --------------------------------
+Left Hand Side: MI(B,F)  = -0.1293
+values : 1  2
+Oi = 2.0
+ei = 2.188
+ termProb = 0.125
+Chi-square = 0.0162
+maxEntropy = 5.129283016944966
+SysEntropy = 3.375
+E^/E' = 0.6579866988915288
+O/2 = 1.0
+(E^/E')^(O/2) = 0.6579866988915288
+Chi-square/2N = 5.0625E-4
+1/Pr = 8.0
+(Chi-square/2N)^(E^/E')^(O/2) = 5.0625E-4
+rightHandSide = 5.0625E-4
+Right Hand Side : 5.0625E-4
+Left Hand Side < Right Hand Side
+Conclusion: B,F is not a statiscally significant association pattern because it fails the independency test
+------------------------------------------------------------------------
+----------------------- Test pattern: (5,4) --------------------------------
+Left Hand Side: MI(B,F)  = 3.0
+values : 5  4
+Oi = 2.0
+ei = 0.25
+ termProb = 0.125
+Chi-square = 12.25
+maxEntropy = 5.129283016944966
+SysEntropy = 3.375
+E^/E' = 0.6579866988915288
+O/2 = 1.0
+(E^/E')^(O/2) = 0.6579866988915288
+Chi-square/2N = 0.3828125
+1/Pr = 8.0
+(Chi-square/2N)^(E^/E')^(O/2) = 0.3828125
+rightHandSide = 0.3828125
+Right Hand Side : 0.3828125
+Left Hand Side > Right Hand Side
+Conclusion: B,F is a statiscally significant association pattern because it passes the independency test
+------------------------------------------------------------------------
+Alert : the data for this data point is not valid!!!
+-----------------------------------Threshold Test---------------------------------
+
+Total = 16
+Pattern(C,D)     Frequency Count       Pattern Probability        Passing Threshold Test
+0,0                  1                   0.0625                     No
+0,1                  3                   0.1875                     Yes
+1,0                  2                   0.125                     Yes
+1,1                  5                   0.3125                     Yes
+2,0                  1                   0.0625                     No
+2,1                  1                   0.0625                     No
+3,0                  1                   0.0625                     No
+3,1                  1                   0.0625                     No
+0,                  1                   0.0625                     No
+-----------------------------Statiscally Significant Test-------------------------
+----------------------- Test pattern: (0,1) --------------------------------
+Left Hand Side: MI(C,D)  = -0.0589
+values : 0  1
+Oi = 3.0
+ei = 3.125
+ termProb = 0.1875
+Chi-square = 0.005
+maxEntropy = 3.5849625007211565
+SysEntropy = 2.8522
+E^/E' = 0.7956010695861524
+O/2 = 1.0
+(E^/E')^(O/2) = 0.7956010695861524
+Chi-square/2N = 1.5625E-4
+1/Pr = 5.333333333333333
+(Chi-square/2N)^(E^/E')^(O/2) = 1.5625E-4
+rightHandSide = 1.5625E-4
+Right Hand Side : 1.5625E-4
+Left Hand Side < Right Hand Side
+Conclusion: C,D is not a statiscally significant association pattern because it fails the independency test
+------------------------------------------------------------------------
+----------------------- Test pattern: (1,0) --------------------------------
+Left Hand Side: MI(C,D)  = -0.1293
+values : 1  0
+Oi = 2.0
+ei = 2.188
+ termProb = 0.125
+Chi-square = 0.0162
+maxEntropy = 3.5849625007211565
+SysEntropy = 2.8522
+E^/E' = 0.7956010695861524
+O/2 = 1.0
+(E^/E')^(O/2) = 0.7956010695861524
+Chi-square/2N = 5.0625E-4
+1/Pr = 8.0
+(Chi-square/2N)^(E^/E')^(O/2) = 5.0625E-4
+rightHandSide = 5.0625E-4
+Right Hand Side : 5.0625E-4
+Left Hand Side < Right Hand Side
+Conclusion: C,D is not a statiscally significant association pattern because it fails the independency test
+------------------------------------------------------------------------
+----------------------- Test pattern: (1,1) --------------------------------
+Left Hand Side: MI(C,D)  = 0.1926
+values : 1  1
+Oi = 5.0
+ei = 4.375
+ termProb = 0.3125
+Chi-square = 0.0893
+maxEntropy = 3.5849625007211565
+SysEntropy = 2.8522
+E^/E' = 0.7956010695861524
+O/2 = 1.0
+(E^/E')^(O/2) = 0.7956010695861524
+Chi-square/2N = 0.002790625
+1/Pr = 3.2
+(Chi-square/2N)^(E^/E')^(O/2) = 0.002790625
+rightHandSide = 0.002790625
+Right Hand Side : 0.002790625
+Left Hand Side > Right Hand Side
+Conclusion: C,D is a statiscally significant association pattern because it passes the independency test
+------------------------------------------------------------------------
+Alert : the data for this data point is not valid!!!
+-----------------------------------Threshold Test---------------------------------
+
+Total = 16
+Pattern(C,E)     Frequency Count       Pattern Probability        Passing Threshold Test
+0,0                  1                   0.0625                     No
+1,0                  6                   0.375                     Yes
+0,1                  2                   0.125                     Yes
+1,1                  1                   0.0625                     No
+0,2                  1                   0.0625                     No
+2,1                  2                   0.125                     Yes
+3,2                  2                   0.125                     Yes
+0,                  1                   0.0625                     No
+-----------------------------Statiscally Significant Test-------------------------
+----------------------- Test pattern: (1,0) --------------------------------
+Left Hand Side: MI(C,E)  = 0.9703
+values : 1  0
+Oi = 6.0
+ei = 3.062
+ termProb = 0.375
+Chi-square = 2.819
+maxEntropy = 4.0
+SysEntropy = 2.6556
+E^/E' = 0.6639
+O/2 = 1.0
+(E^/E')^(O/2) = 0.6639
+Chi-square/2N = 0.08809375
+1/Pr = 2.6666666666666665
+(Chi-square/2N)^(E^/E')^(O/2) = 0.08809375
+rightHandSide = 0.08809375
+Right Hand Side : 0.08809375
+Left Hand Side > Right Hand Side
+Conclusion: C,E is a statiscally significant association pattern because it passes the independency test
+------------------------------------------------------------------------
+----------------------- Test pattern: (0,1) --------------------------------
+Left Hand Side: MI(C,E)  = 0.3561
+values : 0  1
+Oi = 2.0
+ei = 1.562
+ termProb = 0.125
+Chi-square = 0.1228
+maxEntropy = 4.0
+SysEntropy = 2.6556
+E^/E' = 0.6639
+O/2 = 1.0
+(E^/E')^(O/2) = 0.6639
+Chi-square/2N = 0.0038375
+1/Pr = 8.0
+(Chi-square/2N)^(E^/E')^(O/2) = 0.0038375
+rightHandSide = 0.0038375
+Right Hand Side : 0.0038375
+Left Hand Side > Right Hand Side
+Conclusion: C,E is a statiscally significant association pattern because it passes the independency test
+------------------------------------------------------------------------
+----------------------- Test pattern: (2,1) --------------------------------
+Left Hand Side: MI(C,E)  = 1.6781
+values : 2  1
+Oi = 2.0
+ei = 0.625
+ termProb = 0.125
+Chi-square = 3.025
+maxEntropy = 4.0
+SysEntropy = 2.6556
+E^/E' = 0.6639
+O/2 = 1.0
+(E^/E')^(O/2) = 0.6639
+Chi-square/2N = 0.09453125
+1/Pr = 8.0
+(Chi-square/2N)^(E^/E')^(O/2) = 0.09453125
+rightHandSide = 0.09453125
+Right Hand Side : 0.09453125
+Left Hand Side > Right Hand Side
+Conclusion: C,E is a statiscally significant association pattern because it passes the independency test
+------------------------------------------------------------------------
+----------------------- Test pattern: (3,2) --------------------------------
+Left Hand Side: MI(C,E)  = 2.415
+values : 3  2
+Oi = 2.0
+ei = 0.375
+ termProb = 0.125
+Chi-square = 7.0417
+maxEntropy = 4.0
+SysEntropy = 2.6556
+E^/E' = 0.6639
+O/2 = 1.0
+(E^/E')^(O/2) = 0.6639
+Chi-square/2N = 0.220053125
+1/Pr = 8.0
+(Chi-square/2N)^(E^/E')^(O/2) = 0.220053125
+rightHandSide = 0.220053125
+Right Hand Side : 0.220053125
+Left Hand Side > Right Hand Side
+Conclusion: C,E is a statiscally significant association pattern because it passes the independency test
+------------------------------------------------------------------------
+-----------------------------------Threshold Test---------------------------------
+
+Total = 16
+Pattern(C,F)     Frequency Count       Pattern Probability        Passing Threshold Test
+0,0                  1                   0.0625                     No
+0,1                  2                   0.125                     Yes
+1,1                  2                   0.125                     Yes
+0,2                  2                   0.125                     Yes
+1,2                  3                   0.1875                     Yes
+3,0                  1                   0.0625                     No
+1,3                  1                   0.0625                     No
+2,3                  1                   0.0625                     No
+1,4                  1                   0.0625                     No
+3,3                  1                   0.0625                     No
+2,4                  1                   0.0625                     No
+-----------------------------Statiscally Significant Test-------------------------
+----------------------- Test pattern: (0,1) --------------------------------
+Left Hand Side: MI(C,F)  = 0.6781
+values : 0  1
+Oi = 2.0
+ei = 1.25
+ termProb = 0.125
+Chi-square = 0.45
+maxEntropy = 4.321928094887363
+SysEntropy = 3.3278
+E^/E' = 0.7699804177530465
+O/2 = 1.0
+(E^/E')^(O/2) = 0.7699804177530465
+Chi-square/2N = 0.0140625
+1/Pr = 8.0
+(Chi-square/2N)^(E^/E')^(O/2) = 0.0140625
+rightHandSide = 0.0140625
+Right Hand Side : 0.0140625
+Left Hand Side > Right Hand Side
+Conclusion: C,F is a statiscally significant association pattern because it passes the independency test
+------------------------------------------------------------------------
+----------------------- Test pattern: (1,1) --------------------------------
+Left Hand Side: MI(C,F)  = 0.1926
+values : 1  1
+Oi = 2.0
+ei = 1.75
+ termProb = 0.125
+Chi-square = 0.0357
+maxEntropy = 4.321928094887363
+SysEntropy = 3.3278
+E^/E' = 0.7699804177530465
+O/2 = 1.0
+(E^/E')^(O/2) = 0.7699804177530465
+Chi-square/2N = 0.001115625
+1/Pr = 8.0
+(Chi-square/2N)^(E^/E')^(O/2) = 0.001115625
+rightHandSide = 0.001115625
+Right Hand Side : 0.001115625
+Left Hand Side > Right Hand Side
+Conclusion: C,F is a statiscally significant association pattern because it passes the independency test
+------------------------------------------------------------------------
+----------------------- Test pattern: (0,2) --------------------------------
+Left Hand Side: MI(C,F)  = 0.3561
+values : 0  2
+Oi = 2.0
+ei = 1.562
+ termProb = 0.125
+Chi-square = 0.1228
+maxEntropy = 4.321928094887363
+SysEntropy = 3.3278
+E^/E' = 0.7699804177530465
+O/2 = 1.0
+(E^/E')^(O/2) = 0.7699804177530465
+Chi-square/2N = 0.0038375
+1/Pr = 8.0
+(Chi-square/2N)^(E^/E')^(O/2) = 0.0038375
+rightHandSide = 0.0038375
+Right Hand Side : 0.0038375
+Left Hand Side > Right Hand Side
+Conclusion: C,F is a statiscally significant association pattern because it passes the independency test
+------------------------------------------------------------------------
+----------------------- Test pattern: (1,2) --------------------------------
+Left Hand Side: MI(C,F)  = 0.4557
+values : 1  2
+Oi = 3.0
+ei = 2.188
+ termProb = 0.1875
+Chi-square = 0.3013
+maxEntropy = 4.321928094887363
+SysEntropy = 3.3278
+E^/E' = 0.7699804177530465
+O/2 = 1.0
+(E^/E')^(O/2) = 0.7699804177530465
+Chi-square/2N = 0.009415625
+1/Pr = 5.333333333333333
+(Chi-square/2N)^(E^/E')^(O/2) = 0.009415625
+rightHandSide = 0.009415625
+Right Hand Side : 0.009415625
+Left Hand Side > Right Hand Side
+Conclusion: C,F is a statiscally significant association pattern because it passes the independency test
+------------------------------------------------------------------------
+Alert : the data for this data point is not valid!!!
+-----------------------------------Threshold Test---------------------------------
+
+Total = 16
+Pattern(D,E)     Frequency Count       Pattern Probability        Passing Threshold Test
+                  1                   0.0625                     No
+0,0                  1                   0.0625                     No
+1,0                  6                   0.375                     Yes
+0,1                  3                   0.1875                     Yes
+1,1                  2                   0.125                     Yes
+0,2                  1                   0.0625                     No
+1,2                  2                   0.125                     Yes
+-----------------------------Statiscally Significant Test-------------------------
+----------------------- Test pattern: (1,0) --------------------------------
+Left Hand Side: MI(D,E)  = 0.4557
+values : 1  0
+Oi = 6.0
+ei = 4.375
+ termProb = 0.375
+Chi-square = 0.6036
+maxEntropy = 3.5849625007211565
+SysEntropy = 2.4835
+E^/E' = 0.6927548055245808
+O/2 = 1.0
+(E^/E')^(O/2) = 0.6927548055245808
+Chi-square/2N = 0.0188625
+1/Pr = 2.6666666666666665
+(Chi-square/2N)^(E^/E')^(O/2) = 0.0188625
+rightHandSide = 0.0188625
+Right Hand Side : 0.0188625
+Left Hand Side > Right Hand Side
+Conclusion: D,E is a statiscally significant association pattern because it passes the independency test
+------------------------------------------------------------------------
+----------------------- Test pattern: (0,1) --------------------------------
+Left Hand Side: MI(D,E)  = 0.9411
+values : 0  1
+Oi = 3.0
+ei = 1.562
+ termProb = 0.1875
+Chi-square = 1.3238
+maxEntropy = 3.5849625007211565
+SysEntropy = 2.4835
+E^/E' = 0.6927548055245808
+O/2 = 1.0
+(E^/E')^(O/2) = 0.6927548055245808
+Chi-square/2N = 0.04136875
+1/Pr = 5.333333333333333
+(Chi-square/2N)^(E^/E')^(O/2) = 0.04136875
+rightHandSide = 0.04136875
+Right Hand Side : 0.04136875
+Left Hand Side > Right Hand Side
+Conclusion: D,E is a statiscally significant association pattern because it passes the independency test
+------------------------------------------------------------------------
+----------------------- Test pattern: (1,1) --------------------------------
+Left Hand Side: MI(D,E)  = -0.6439
+values : 1  1
+Oi = 2.0
+ei = 3.125
+ termProb = 0.125
+Chi-square = 0.405
+maxEntropy = 3.5849625007211565
+SysEntropy = 2.4835
+E^/E' = 0.6927548055245808
+O/2 = 1.0
+(E^/E')^(O/2) = 0.6927548055245808
+Chi-square/2N = 0.01265625
+1/Pr = 8.0
+(Chi-square/2N)^(E^/E')^(O/2) = 0.01265625
+rightHandSide = 0.01265625
+Right Hand Side : 0.01265625
+Left Hand Side < Right Hand Side
+Conclusion: D,E is not a statiscally significant association pattern because it fails the independency test
+------------------------------------------------------------------------
+----------------------- Test pattern: (1,2) --------------------------------
+Left Hand Side: MI(D,E)  = 0.0931
+values : 1  2
+Oi = 2.0
+ei = 1.875
+ termProb = 0.125
+Chi-square = 0.0083
+maxEntropy = 3.5849625007211565
+SysEntropy = 2.4835
+E^/E' = 0.6927548055245808
+O/2 = 1.0
+(E^/E')^(O/2) = 0.6927548055245808
+Chi-square/2N = 2.59375E-4
+1/Pr = 8.0
+(Chi-square/2N)^(E^/E')^(O/2) = 2.59375E-4
+rightHandSide = 2.59375E-4
+Right Hand Side : 2.59375E-4
+Left Hand Side > Right Hand Side
+Conclusion: D,E is a statiscally significant association pattern because it passes the independency test
+------------------------------------------------------------------------
+Alert : the data for this data point is not valid!!!
+-----------------------------------Threshold Test---------------------------------
+
+Total = 16
+Pattern(D,F)     Frequency Count       Pattern Probability        Passing Threshold Test
+                  1                   0.0625                     No
+1,0                  2                   0.125                     Yes
+0,1                  1                   0.0625                     No
+1,1                  2                   0.125                     Yes
+0,2                  1                   0.0625                     No
+1,2                  4                   0.25                     Yes
+0,3                  1                   0.0625                     No
+1,3                  2                   0.125                     Yes
+0,4                  2                   0.125                     Yes
+-----------------------------Statiscally Significant Test-------------------------
+----------------------- Test pattern: (1,0) --------------------------------
+Left Hand Side: MI(D,F)  = 0.6781
+values : 1  0
+Oi = 2.0
+ei = 1.25
+ termProb = 0.125
+Chi-square = 0.45
+maxEntropy = 3.9068905956085187
+SysEntropy = 3.0
+E^/E' = 0.7678740744294464
+O/2 = 1.0
+(E^/E')^(O/2) = 0.7678740744294464
+Chi-square/2N = 0.0140625
+1/Pr = 8.0
+(Chi-square/2N)^(E^/E')^(O/2) = 0.0140625
+rightHandSide = 0.0140625
+Right Hand Side : 0.0140625
+Left Hand Side > Right Hand Side
+Conclusion: D,F is a statiscally significant association pattern because it passes the independency test
+------------------------------------------------------------------------
+----------------------- Test pattern: (1,1) --------------------------------
+Left Hand Side: MI(D,F)  = -0.3219
+values : 1  1
+Oi = 2.0
+ei = 2.5
+ termProb = 0.125
+Chi-square = 0.1
+maxEntropy = 3.9068905956085187
+SysEntropy = 3.0
+E^/E' = 0.7678740744294464
+O/2 = 1.0
+(E^/E')^(O/2) = 0.7678740744294464
+Chi-square/2N = 0.003125
+1/Pr = 8.0
+(Chi-square/2N)^(E^/E')^(O/2) = 0.003125
+rightHandSide = 0.003125
+Right Hand Side : 0.003125
+Left Hand Side < Right Hand Side
+Conclusion: D,F is not a statiscally significant association pattern because it fails the independency test
+------------------------------------------------------------------------
+----------------------- Test pattern: (1,2) --------------------------------
+Left Hand Side: MI(D,F)  = 0.3561
+values : 1  2
+Oi = 4.0
+ei = 3.125
+ termProb = 0.25
+Chi-square = 0.245
+maxEntropy = 3.9068905956085187
+SysEntropy = 3.0
+E^/E' = 0.7678740744294464
+O/2 = 1.0
+(E^/E')^(O/2) = 0.7678740744294464
+Chi-square/2N = 0.00765625
+1/Pr = 4.0
+(Chi-square/2N)^(E^/E')^(O/2) = 0.00765625
+rightHandSide = 0.00765625
+Right Hand Side : 0.00765625
+Left Hand Side > Right Hand Side
+Conclusion: D,F is a statiscally significant association pattern because it passes the independency test
+------------------------------------------------------------------------
+----------------------- Test pattern: (1,3) --------------------------------
+Left Hand Side: MI(D,F)  = 0.0931
+values : 1  3
+Oi = 2.0
+ei = 1.875
+ termProb = 0.125
+Chi-square = 0.0083
+maxEntropy = 3.9068905956085187
+SysEntropy = 3.0
+E^/E' = 0.7678740744294464
+O/2 = 1.0
+(E^/E')^(O/2) = 0.7678740744294464
+Chi-square/2N = 2.59375E-4
+1/Pr = 8.0
+(Chi-square/2N)^(E^/E')^(O/2) = 2.59375E-4
+rightHandSide = 2.59375E-4
+Right Hand Side : 2.59375E-4
+Left Hand Side > Right Hand Side
+Conclusion: D,F is a statiscally significant association pattern because it passes the independency test
+------------------------------------------------------------------------
+----------------------- Test pattern: (0,4) --------------------------------
+Left Hand Side: MI(D,F)  = 1.6781
+values : 0  4
+Oi = 2.0
+ei = 0.625
+ termProb = 0.125
+Chi-square = 3.025
+maxEntropy = 3.9068905956085187
+SysEntropy = 3.0
+E^/E' = 0.7678740744294464
+O/2 = 1.0
+(E^/E')^(O/2) = 0.7678740744294464
+Chi-square/2N = 0.09453125
+1/Pr = 8.0
+(Chi-square/2N)^(E^/E')^(O/2) = 0.09453125
+rightHandSide = 0.09453125
+Right Hand Side : 0.09453125
+Left Hand Side > Right Hand Side
+Conclusion: D,F is a statiscally significant association pattern because it passes the independency test
+------------------------------------------------------------------------
+Alert : the data for this data point is not valid!!!
+-----------------------------------Threshold Test---------------------------------
+
+Total = 16
+Pattern(E,F)     Frequency Count       Pattern Probability        Passing Threshold Test
+                  1                   0.0625                     No
+0,1                  3                   0.1875                     Yes
+0,2                  3                   0.1875                     Yes
+2,0                  2                   0.125                     Yes
+1,2                  2                   0.125                     Yes
+0,3                  1                   0.0625                     No
+1,3                  1                   0.0625                     No
+1,4                  2                   0.125                     Yes
+2,3                  1                   0.0625                     No
+-----------------------------Statiscally Significant Test-------------------------
+----------------------- Test pattern: (0,1) --------------------------------
+Left Hand Side: MI(E,F)  = 0.7776
+values : 0  1
+Oi = 3.0
+ei = 1.75
+ termProb = 0.1875
+Chi-square = 0.8929
+maxEntropy = 4.321928094887363
+SysEntropy = 3.0306
+E^/E' = 0.7012148128019662
+O/2 = 1.0
+(E^/E')^(O/2) = 0.7012148128019662
+Chi-square/2N = 0.027903125
+1/Pr = 5.333333333333333
+(Chi-square/2N)^(E^/E')^(O/2) = 0.027903125
+rightHandSide = 0.027903125
+Right Hand Side : 0.027903125
+Left Hand Side > Right Hand Side
+Conclusion: E,F is a statiscally significant association pattern because it passes the independency test
+------------------------------------------------------------------------
+----------------------- Test pattern: (0,2) --------------------------------
+Left Hand Side: MI(E,F)  = 0.4557
+values : 0  2
+Oi = 3.0
+ei = 2.188
+ termProb = 0.1875
+Chi-square = 0.3013
+maxEntropy = 4.321928094887363
+SysEntropy = 3.0306
+E^/E' = 0.7012148128019662
+O/2 = 1.0
+(E^/E')^(O/2) = 0.7012148128019662
+Chi-square/2N = 0.009415625
+1/Pr = 5.333333333333333
+(Chi-square/2N)^(E^/E')^(O/2) = 0.009415625
+rightHandSide = 0.009415625
+Right Hand Side : 0.009415625
+Left Hand Side > Right Hand Side
+Conclusion: E,F is a statiscally significant association pattern because it passes the independency test
+------------------------------------------------------------------------
+----------------------- Test pattern: (2,0) --------------------------------
+Left Hand Side: MI(E,F)  = 2.415
+values : 2  0
+Oi = 2.0
+ei = 0.375
+ termProb = 0.125
+Chi-square = 7.0417
+maxEntropy = 4.321928094887363
+SysEntropy = 3.0306
+E^/E' = 0.7012148128019662
+O/2 = 1.0
+(E^/E')^(O/2) = 0.7012148128019662
+Chi-square/2N = 0.220053125
+1/Pr = 8.0
+(Chi-square/2N)^(E^/E')^(O/2) = 0.220053125
+rightHandSide = 0.220053125
+Right Hand Side : 0.220053125
+Left Hand Side > Right Hand Side
+Conclusion: E,F is a statiscally significant association pattern because it passes the independency test
+------------------------------------------------------------------------
+----------------------- Test pattern: (1,2) --------------------------------
+Left Hand Side: MI(E,F)  = 0.3561
+values : 1  2
+Oi = 2.0
+ei = 1.562
+ termProb = 0.125
+Chi-square = 0.1228
+maxEntropy = 4.321928094887363
+SysEntropy = 3.0306
+E^/E' = 0.7012148128019662
+O/2 = 1.0
+(E^/E')^(O/2) = 0.7012148128019662
+Chi-square/2N = 0.0038375
+1/Pr = 8.0
+(Chi-square/2N)^(E^/E')^(O/2) = 0.0038375
+rightHandSide = 0.0038375
+Right Hand Side : 0.0038375
+Left Hand Side > Right Hand Side
+Conclusion: E,F is a statiscally significant association pattern because it passes the independency test
+------------------------------------------------------------------------
+----------------------- Test pattern: (1,4) --------------------------------
+Left Hand Side: MI(E,F)  = 1.6781
+values : 1  4
+Oi = 2.0
+ei = 0.625
+ termProb = 0.125
+Chi-square = 3.025
+maxEntropy = 4.321928094887363
+SysEntropy = 3.0306
+E^/E' = 0.7012148128019662
+O/2 = 1.0
+(E^/E')^(O/2) = 0.7012148128019662
+Chi-square/2N = 0.09453125
+1/Pr = 8.0
+(Chi-square/2N)^(E^/E')^(O/2) = 0.09453125
+rightHandSide = 0.09453125
+Right Hand Side : 0.09453125
+Left Hand Side > Right Hand Side
+Conclusion: E,F is a statiscally significant association pattern because it passes the independency test
+------------------------------------------------------------------------
+
+Process finished with exit code 0

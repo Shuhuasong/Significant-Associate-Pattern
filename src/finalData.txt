@@ -1,4 +1,4 @@
-101 4
+106 4
 2 2 2
 ItemId  Bread  Milk  Diapers
 1         0     0      0
@@ -101,3 +101,11 @@ ItemId  Bread  Milk  Diapers
 18        1     1      1
 19        1     1      1
 20        1     1      1
+1         0     0      0
+2         0     0      0
+3         0     0      0
+4         0     0      0
+5         0     0      0
+
+
+
