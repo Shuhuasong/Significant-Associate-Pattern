@@ -357,7 +357,7 @@ public class AssociationPattern {
         System.out.println("rightHandSide = " + result);
         return result;
     }
-
+    //Max_Entropy = log_2(# of combination of states among all the variables)
     private  double getMaxEntropy(double N) {
         double totleCombState = 1;
         for(int c : inputColIdx){
@@ -369,7 +369,7 @@ public class AssociationPattern {
         System.out.println("maxEntropy = " + result);
         return result;
     }
-
+    //System_Entropy = - SUM_i (Pr_i * log_2(Pr_i))
     private  double getSystemEntropy(double N) {
         int[] elems = new int[patternToFreq.size()];
         int k = 0;
