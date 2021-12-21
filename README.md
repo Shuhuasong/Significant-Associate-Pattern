@@ -126,7 +126,7 @@ if there are A, B, C, D, E, F 6 columns, the program should permute all the 3rd 
 -	TreeSet<String> allExprPatterns: store all the expression of patterns. E.g Pr(B:0,C:0,D:0)
 -	TreeMap<String, Integer> patternToAllFreq: a mapping between the pattern and frequency. E.g  patternToAllFreq.put(“Pr(B:0, C:1))”, 2)
    
-   #####     Methods: 
+   #####     Methods 
    
 -	loadData() : read from input file and write it into dataAry and nummary;
   store all the columns’ name and mapping them into a unique letter  representation(colToLetter, letterToCol); 
