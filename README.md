@@ -32,18 +32,24 @@ Mutual information measure in event pattern level:  log_2[Pr(A:0,B:1)/(Pr(A:0) *
    
 ## 3. Disclose limitation and discussed the lessons learned(All the limiations on the following have been fixed, Please look at video walk through-Improving Version)  
 
-(1)	The program doesn’t check the input which is out of range of status. </br>      
+(1)	The program doesn’t check the input which is out of range of status. </br>
+
+####    Solved : 
+        The program can check if the input data is valid or not by specifying the the number of states for each column from user. 
 ####    Solving Solution: 
-      In order to check if the input data from input table are out of range of specific column(attribute) or not, 
-      I am using an array of HashMap to store all the status of each column. If any data point is unvalid, the program 
-      will skip the pattern without showing in the result.
+        In order to check if the input data from input table are out of range of specific status, we read the total number of states for each column. For Example,
+        (B C D E F) = (2 3 2 3 4), the number represent the B column has total 2 states, C column has total 3 states, D column has 2 states, E column has 3 states, F column has F states. 
+        In the program, we use an array to store the total status of each column. If any data point is unvalid and out of range of states, the program 
+        will not collect this states. That is, when it is 3rd order, if the third number out of state, the pattern will be like "2,3 " instead "2,3,9"
       
-(2)	The program only capture the pattern according to the input, it doesn’t permute very kind of patters, for example, 
-if there are A, B, C, D, E, F 6 columns, the program should permute all the 3rd order patters(ABC, BCD, CDE, DEF, …)
+(2)	The program doesn’t permute very kind of patterns.
+####    Solved:
+        The program can permute all combination of patterns according to the the number of order. for example, 
+        if there are A, B, C, D, E, F 6 columns, the program should permute all the 3rd order patters(ABC, BCD, CDE, DEF, …)
 ####    Solving Solution: 
-       The program reads the number of order from input, and produces all the combination of pattern by applying the 
-       Backtrack algorithm. After get all the permutation, we can process each pattern and calculate the freequecy 
-       of each pattern. 
+        The program reads the number of order from input, and produces all the combination of pattern by applying the 
+        Backtrack algorithm. After get all the permutation, we can process each pattern and calculate the freequecy 
+        of each pattern. 
 ####    Code Snippes
        
         
@@ -80,17 +86,17 @@ if there are A, B, C, D, E, F 6 columns, the program should permute all the 3rd 
         } 
         
   
-    //Produce all the combinations of patterns from all the columns, e.g. "BCD","CDE","CDE",....
-    
+       //Produce all the combinations of patterns from all the columns, e.g. "BCD","CDE","CDE",....
+       //List<Character> colLetters = {'B', 'C', 'D', 'E', 'F'}
        private void backtrack(int start, int numOrder,  StringBuilder sb, Set<String> allPatterns) {
            if(numOrder==0){
                allPatterns.add(sb.toString());
                return;
            }
            for(int i=start; i<colLetters.length; i++){
-               sb.append(colLetters[i]);
+               sb.append(colLetters[i]); // sb = "BCD"
                backtrack(i+1, numOrder-1, sb, allPatterns);
-               sb.deleteCharAt(sb.length()-1);
+               sb.deleteCharAt(sb.length()-1); // sb = "BC"
            }
        }
     
