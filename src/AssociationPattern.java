@@ -1,5 +1,4 @@
-import java.io.FileNotFoundException;
-import java.io.FileReader;
+import java.io.*;
 import java.text.DecimalFormat;
 import java.util.*;
 
@@ -57,7 +56,7 @@ public class AssociationPattern {
         numAry =  new String[numRows][numCols];
     }
 
-    private void loadData(Scanner inputFile, String[][] dataAry) {
+    private void loadData(Scanner inputFile, String[][] dataAry,BufferedWriter outFile) throws IOException {
         int currRow = 0;
         String s;
         while(inputFile.hasNextLine() && currRow < numRows) {
@@ -105,7 +104,7 @@ public class AssociationPattern {
             totalCount += Integer.parseInt(numAry[i][numCols-1]);
         }
 
-        System.out.println("---------------------------------------------------------------------------");
+        outFile.write("---------------------------------------------------------------------------" + "\n");
         for(int c=0; c<numCols; c++){
             char letter = (char)('A'+(char)(c));
             colToLetter.put(dataAry[0][c], letter+"");
@@ -128,19 +127,19 @@ public class AssociationPattern {
 
 
         for(int c=0; c<numCols; c++){
-            System.out.print(dataAry[0][c] + "(" + numAry[0][c] + ")" +  "             ");
+            outFile.write(dataAry[0][c] + "(" + numAry[0][c] + ")" +  "             " );
         }
 
-        System.out.println();
+        outFile.write("\n");
         for(int i = 1; i < numRows; ++i) {
             for(int j = 0; j < numCols; ++j) {
-                System.out.print(dataAry[i][j] + "                   ");
+                outFile.write(dataAry[i][j] + "                   " );
             }
-            System.out.println();
+            outFile.write("\n");
         }
     }
 
-    public double parseExpression(String expression){
+    public double parseExpression(String expression, BufferedWriter outFile){
          int start = 0, end = expression.length()-1;
          String subExpre = "";
          while(start < end){
@@ -210,7 +209,7 @@ public class AssociationPattern {
         return expressProb;
     }
 
-    public void patternFreq_cal(){
+    public void patternFreq_cal(BufferedWriter outFile) throws IOException {
         Map<String, Integer> currPatternToFreq = new HashMap<>();
         totalPattern = 0;
         int n = inputVariables.length;
@@ -229,7 +228,7 @@ public class AssociationPattern {
             for(int c=0; c<inputColIdx.length; c++){
                 int curVal = Integer.parseInt(dataAry[r][inputColIdx[c]]);
                 if(curVal >= colNumStates[inputColIdx[c]]){    //Checking the validation of input
-                    System.out.println("Alert : the data for this data point is not valid!!!");
+                    outFile.write("Alert : the data for this data point is not valid!!!" + "\n");
                     break;
                 }
                 if(c!=inputColIdx.length-1){
@@ -267,56 +266,56 @@ public class AssociationPattern {
             }
             //System.out.println("patternProb = " + patternProb[j] + "-----" + "threshold = " + threshold);
         }
-        thresholdTestPrint(paterrnStatus);
-        System.out.println("-----------------------------Statiscally Significant Test-------------------------");
+        thresholdTestPrint(paterrnStatus, outFile);
+        outFile.write("-----------------------------Statiscally Significant Test-------------------------" + "\n");
         for(int j=0; j<paterrnStatus.length; j++){
             if(paterrnStatus[j].equals("Yes")){
                 termProb = patternProb[j];
-                staticSignificantTest(patternType[j]);
-                System.out.println("------------------------------------------------------------------------");
+                staticSignificantTest(patternType[j], outFile);
+                outFile.write("------------------------------------------------------------------------" + "\n");
             }
         }
     }
 
-    public void thresholdTestPrint(String[] paterrnStatus){
+    public void thresholdTestPrint(String[] paterrnStatus,BufferedWriter outFile) throws IOException {
 
         int k = 0;
-        System.out.println("-----------------------------------Threshold Test---------------------------------");
-        System.out.println();
-        System.out.println("Total = " + totalPattern);
-        System.out.println("Pattern" + "(" + inputExpression + ")     Frequency Count       Pattern Probability        Passing Threshold Test");
+        outFile.write("-----------------------------------Threshold Test---------------------------------" + "\n");
+        outFile.write("\n");
+        outFile.write("Total = " + totalPattern +  "\n");
+        outFile.write("Pattern" + "(" + inputExpression + ")     Frequency Count       Pattern Probability        Passing Threshold Test" + "\n");
         for(String key : patternToFreq.keySet()){
             double prob = (patternToFreq.get(key)*1.0)/totalPattern;
-            System.out.println(key + "                  " + patternToFreq.get(key) + "                   " + prob + "                     "+ paterrnStatus[k++]);
+            outFile.write(key + "                  " + patternToFreq.get(key) + "                   " + prob + "                     "+ paterrnStatus[k++] + "\n");
         }
     }
 
-    private void staticSignificantTest(String pattern) {
-         System.out.println("----------------------- Test pattern: (" + pattern + ") --------------------------------");
+    private void staticSignificantTest(String pattern, BufferedWriter outFile) throws IOException {
+        outFile.write("----------------------- Test pattern: (" + pattern + ") --------------------------------" + "\n");
          inValues = pattern.split(",");
-         double left = leftHandSide(totalPattern, inValues);
-         System.out.println("  = " + left);
-         System.out.print("values : ");
+         double left = leftHandSide(totalPattern, inValues, outFile);
+        outFile.write("  = " + left + "\n");
+        outFile.write("values : " + "\n");
          for(String var : inValues){
-             System.out.print(var + "  ");
+             outFile.write(var + "  ");
          }
-         System.out.println();
-         double right = rightHandSide(totalPattern);
-         System.out.println("Right Hand Side : " + right);
+        outFile.write("\n");
+         double right = rightHandSide(totalPattern, outFile);
+        outFile.write("Right Hand Side : " + right + "\n");
         if(left < right){
-            System.out.println("Left Hand Side < Right Hand Side");
-            System.out.println("Conclusion: " + inputExpression + " is not a statiscally significant association pattern because it fails" +
-                    " the independency test");
+            outFile.write("Left Hand Side < Right Hand Side" + "\n");
+            outFile.write("Conclusion: " + inputExpression + " is not a statiscally significant association pattern because it fails" +
+                    " the independency test" + "\n");
         }else{
-            System.out.println("Left Hand Side > Right Hand Side");
-            System.out.println("Conclusion: " + inputExpression + " is a statiscally significant association pattern because it passes" +
-                    " the independency test");
+            outFile.write("Left Hand Side > Right Hand Side" + "\n");
+            outFile.write("Conclusion: " + inputExpression + " is a statiscally significant association pattern because it passes" +
+                    " the independency test"+ "\n");
         }
     }
 
     // MI(x1, x2, ..., xn)
-    public  double leftHandSide(double N, String[] vals) {
-        System.out.print("Left Hand Side: MI(" + inputExpression + ")");
+    public  double leftHandSide(double N, String[] vals, BufferedWriter outFile) throws IOException {
+        outFile.write("Left Hand Side: MI(" + inputExpression + ")" );
         double result = 0;
         double y = 1;
         for(int i=0; i<vals.length; i++){
@@ -331,18 +330,18 @@ public class AssociationPattern {
     }
 
     //  [1/pr(x1, x2, ..., xn)]*(X^2/2*N)^[(E/E')^O/2]
-    public  double rightHandSide(double N){
+    public  double rightHandSide(double N, BufferedWriter outFile) throws IOException {
         double pr = termProb;
-        double chi_square = getChi_Square(N);
+        double chi_square = getChi_Square(N, outFile);
         double result = 0;
-        double E_maxEntropy = getMaxEntropy(N);
-        double E_sysEntropy = getSystemEntropy(N);
+        double E_maxEntropy = getMaxEntropy(N, outFile);
+        double E_sysEntropy = getSystemEntropy(N, outFile);
         double ESys_Emax = (E_sysEntropy/E_maxEntropy);
-        System.out.println( "E^/E' = " + ESys_Emax);
+        outFile.write( "E^/E' = " + ESys_Emax + "\n");
         double O = (inputVariables.length+0.0)/2; //
-        System.out.println("O/2 = " + O);
+        outFile.write("O/2 = " + O + "\n");
         double expo = Math.pow((E_sysEntropy+0.0)/E_maxEntropy, O);
-        System.out.println("(E^/E')^(O/2) = " + expo);
+        outFile.write("(E^/E')^(O/2) = " + expo + "\n");
         double temp_chi = 0.0;
         if(numOrder==2){
             temp_chi = (chi_square/(2.0*N));
@@ -351,14 +350,14 @@ public class AssociationPattern {
             temp_chi = Math.pow((chi_square/(2.0*N)), expo);
             result = (1/pr) * temp_chi;
         }
-        System.out.println("Chi-square/2N = " + (chi_square/(2.0*N)));
-        System.out.println("1/Pr = " + 1/pr);
-        System.out.println("(Chi-square/2N)^(E^/E')^(O/2) = " + temp_chi);
-        System.out.println("rightHandSide = " + result);
+        outFile.write("Chi-square/2N = " + (chi_square/(2.0*N)) + "\n");
+        outFile.write("1/Pr = " + 1/pr + "\n");
+        outFile.write("(Chi-square/2N)^(E^/E')^(O/2) = " + temp_chi + "\n");
+        outFile.write("rightHandSide = " + result + "\n");
         return result;
     }
     //Max_Entropy = log_2(# of combination of states among all the variables)
-    private  double getMaxEntropy(double N) {
+    private  double getMaxEntropy(double N, BufferedWriter outFile) throws IOException {
         double totleCombState = 1;
         for(int c : inputColIdx){
             //System.out.print(typeToNum[c].size() + " ");
@@ -366,11 +365,11 @@ public class AssociationPattern {
         }
         double result = Math.log(totleCombState)/Math.log(2);
         //result = Math.round(result*10000.0)/10000.0;
-        System.out.println("maxEntropy = " + result);
+        outFile.write("maxEntropy = " + result + "\n");
         return result;
     }
     //System_Entropy = - SUM_i (Pr_i * log_2(Pr_i))
-    private  double getSystemEntropy(double N) {
+    private  double getSystemEntropy(double N, BufferedWriter outFile) throws IOException {
         int[] elems = new int[patternToFreq.size()];
         int k = 0;
         for(String pattern : patternToFreq.keySet()){
@@ -381,11 +380,11 @@ public class AssociationPattern {
             sysEntropy += (elem*1.0/N) * Math.log(N*1.0/elem)/Math.log(2);
         }
         sysEntropy = Math.round(sysEntropy*10000.0)/10000.0;
-        System.out.println("SysEntropy = " + sysEntropy);
+        outFile.write("SysEntropy = " + sysEntropy + "\n");
         return sysEntropy;
     }
 
-    private double getChi_Square(double N) {
+    private double getChi_Square(double N, BufferedWriter outFile) throws IOException {
         double Oi = N * termProb;
         double ei = N;
         for(int i=0; i<inValues.length; i++){
@@ -396,10 +395,10 @@ public class AssociationPattern {
         ei = Double.parseDouble(decimalFormat.format(ei));
         double result = Math.pow(Oi-ei, 2)/ei;
         result = Math.round(result*10000.0)/10000.0;
-        System.out.println("Oi = " + Oi );
-        System.out.println("ei = " + ei);
-        System.out.println(" termProb = " + termProb);
-        System.out.println("Chi-square = " + result);
+        outFile.write("Oi = " + Oi + "\n" );
+        outFile.write("ei = " + ei + "\n");
+        outFile.write(" termProb = " + termProb + "\n");
+        outFile.write("Chi-square = " + result + "\n");
         return result;
     }
 
@@ -415,14 +414,14 @@ public class AssociationPattern {
     }
 
 
-    private TreeSet<String> getPatternPermute(int numOrder) {
+    private TreeSet<String> getPatternPermute(int numOrder,BufferedWriter outFile) throws IOException {
         Set<String> allPatterns = new TreeSet<>();
         StringBuilder sb = new StringBuilder();
         backtrack(1, numOrder, sb, allPatterns);
         int size = allPatterns.size();
-        System.out.println("All combinations of " + numOrder + "_Order patterns(column representation): size = " + size);
+        outFile.write("All combinations of " + numOrder + "_Order patterns(column representation): size = " + size + "\n");
         for(String p : allPatterns){
-            System.out.println("Pattern-letter = " + p);
+            outFile.write("Pattern-letter = " + p + "\n");
         }
         allExprPatterns = new TreeSet<>();
         patternToAllFreq = new TreeMap<>();
@@ -453,10 +452,10 @@ public class AssociationPattern {
         for(String pat: allExprPatterns){
             //System.out.println("Pattern-expression = " + pat);
         }
-        System.out.println();
-        System.out.println("Order       " + "Pattern Variables        " + "Number of permutation");
+        outFile.write("\n");
+        outFile.write("Order       " + "Pattern Variables        " + "Number of permutation" + "\n");
         for(String currPat : patternToAllFreq.keySet()){
-            System.out.println(numOrder + "             " + currPat + "                          " + patternToAllFreq.get(currPat));
+            outFile.write(numOrder + "             " + currPat + "                          " + patternToAllFreq.get(currPat) + "\n");
         }
         return allExprPatterns;
     }
@@ -473,44 +472,39 @@ public class AssociationPattern {
         }
     }
 
-    public static void main(String[] args) throws FileNotFoundException {
+    public static void main(String[] args) throws IOException {
+        //Read input
         Scanner inputFile = new Scanner(new FileReader(args[0]));
         String inputName = args[0];
         String thresholdSt = args[1];
-        //String numStatesSt = args[2]; //expression==order
         String order = args[2];
         int numOrder = Integer.parseInt(order);
-        //System.out.println(args[0] + " " + args[1]);
-
         double threshold = Double.parseDouble(thresholdSt);
-        System.out.println("threshoud = " + threshold);
+        String inputFileName = inputName.substring(0, 5) + "_" + order + "Order_output.txt";
+        BufferedWriter outputFile = new BufferedWriter(new FileWriter(new File(inputFileName)));
+        outputFile.write("threshoud = " + threshold + "\n");
         int numRows = inputFile.nextInt();
         int numCols = inputFile.nextInt();
         inputFile.nextLine();
         String numStatesSt = inputFile.nextLine();
-        System.out.println("states = " + numStatesSt);
+        outputFile.write("states = " + numStatesSt + "\n");
 
-        //inputFile.nextLine();
+
         AssociationPattern pattern = new AssociationPattern(numRows, numCols, threshold, numOrder);
         String[][] dataAry = pattern.dataAry;
 
-        pattern.loadData(inputFile, dataAry);
+        pattern.loadData(inputFile, dataAry,outputFile);
         pattern.getNumStatesInput(numStatesSt);
 
-        System.out.println("------------------#########################-------------------");
-
+        outputFile.write("------------------#########################-------------------" + "\n");
         int total = pattern.totalPattern;
-        // System.out.println("Total = " + total);
-
         Map<String, String> colToLetter = pattern.colToLetter;
-        for(String k : colToLetter.keySet()){
-          //  System.out.println(k + "   " + colToLetter.get(k));
-        }
-        Set<String> allExprPatterns = pattern.getPatternPermute(numOrder);
+        Set<String> allExprPatterns = pattern.getPatternPermute(numOrder,outputFile);
         for(String pat : allExprPatterns){
-            double  expressProb = pattern.parseExpression(pat);
-            pattern.patternFreq_cal();
+            double  expressProb = pattern.parseExpression(pat,outputFile);
+            pattern.patternFreq_cal(outputFile);
         }
+        outputFile.close();
         inputFile.close();
     }
 
